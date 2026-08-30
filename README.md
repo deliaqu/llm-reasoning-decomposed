@@ -3,9 +3,8 @@
 Code accompanying the paper by
 [Zhongdi Qu](mailto:zq84@cornell.edu) and Carla P. Gomes (Cornell University).
 
-<!-- TODO(camera-ready): replace with the final venue and paper/anthology link once the
-     commitment decision is in. -->
-*Venue: to appear.*
+<!-- TODO(camera-ready): add the ACL Anthology link once the paper appears. -->
+*To appear in Findings of the Association for Computational Linguistics: EMNLP 2026.*
 
 The paper proposes a four-stage decomposition of grade-school math word-problem
 solving in LLMs — **Schema Abstraction**, **Operation Planning**, **Operand
@@ -118,12 +117,13 @@ which our four-stage account builds on. We thank the authors for releasing it.
 
 ## Citation
 
-<!-- TODO(camera-ready): update once the paper appears in the ACL Anthology. -->
+<!-- TODO(camera-ready): add pages and the anthology ID once the paper appears. -->
 ```bibtex
 @inproceedings{qu2026fourstage,
   title     = {A Four-Stage Decomposition of Word-Problem Solving and Mechanistic
                Fragility in {LLM} Math Reasoning},
   author    = {Qu, Zhongdi and Gomes, Carla P.},
+  booktitle = {Findings of the Association for Computational Linguistics: EMNLP 2026},
   year      = {2026}
 }
 ```
