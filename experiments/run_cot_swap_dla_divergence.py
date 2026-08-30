@@ -46,6 +46,8 @@ since the target varies per pair; per-pair targets live in the raw npz.
 Usage:
   python run_cot_swap_dla_divergence.py --layers 22 23 24 ... 36
 """
+import sys as _sys, pathlib as _pathlib
+_sys.path.insert(0, str(_pathlib.Path(__file__).resolve().parent.parent))
 
 import argparse
 import difflib

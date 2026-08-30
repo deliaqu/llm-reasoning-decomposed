@@ -18,7 +18,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "experiments"))
 import run_svamp_variants_presence_probe as SV  # noqa: E402
 import run_svamp_presence_probe as SP  # noqa: E402
 

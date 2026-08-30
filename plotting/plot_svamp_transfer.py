@@ -30,7 +30,7 @@ def _figdir():
     """Sibling paper tree when present, otherwise a figures/ dir in the repo."""
     p = REPO.parent / "paper" / "figures"
     return p if p.is_dir() else REPO / "figures"
-sys.path.insert(0, str(REPO / "interpretability"))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 from paper_render import (setup_rc, SINGLE_COL_W, PANEL_H, TICK_LS,  # noqa: E402
                           PRESENCE_COLORS, PRESENCE_LABELS,
                           _presence_bootstrap_ci, _draw_stage_lines,

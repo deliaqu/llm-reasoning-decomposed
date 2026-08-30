@@ -19,7 +19,8 @@ from pathlib import Path
 
 import numpy as np
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "experiments"))
 import run_phantomwiki_role_probe as R  # noqa: E402
 import run_svamp_presence_probe as SP  # noqa: E402
 

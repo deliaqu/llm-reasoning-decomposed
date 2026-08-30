@@ -19,7 +19,8 @@ from pathlib import Path
 
 import numpy as np
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "experiments"))
 import run_phantomwiki_role_probe as R  # noqa: E402
 import run_svamp_presence_probe as SP  # noqa: E402
 
@@ -57,6 +58,11 @@ def main():
         for w in inters:
             if re.search(rf"\b{re.escape(w)}\b", anchor_art):
                 inter_adj[w].append(i)
+        # difficulty-matched negatives: positives are inherently multi-hop,
+        # so restrict negatives to multi-hop rows too (question complexity is
+        # decodable at ceiling early and would otherwise leak into the contrast)
+        if row.difficulty < 2:
+            continue
         for w in bysts:
             if re.search(rf"\b{re.escape(w)}\b", anchor_art):
                 byst_adj[w].append(i)
@@ -94,11 +100,11 @@ def main():
     out = {
         "design": "positives: name is chain intermediate AND in anchor article; "
                   "negatives: same name uninvolved AND in anchor article "
-                  "(presence/adjacency/copy matched; only chain membership differs)",
+                  "(presence/adjacency/copy matched; only chain membership differs; negatives difficulty-matched to multi-hop)",
         "layers": LAYERS,
         "per_target": results,
     }
-    out_path = R.OUT_DIR / "phantomwiki_role_probe_adjmatched_diag.json"
+    out_path = R.OUT_DIR / "phantomwiki_role_probe_adjmatched_dm_diag.json"
     out_path.write_text(json.dumps(out, indent=2))
     print(f"wrote {out_path}")
     arr = np.array([[results[w][str(l)] for l in LAYERS] for w in results])

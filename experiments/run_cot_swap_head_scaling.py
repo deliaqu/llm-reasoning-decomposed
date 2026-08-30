@@ -12,6 +12,8 @@ per-head output at the readout position by scalar α:
 Outputs the same normalized recovery metric as run_cot_swap_head_patching.py,
 so curves can be overlaid on the head-patching bar plot.
 """
+import sys as _sys, pathlib as _pathlib
+_sys.path.insert(0, str(_pathlib.Path(__file__).resolve().parent.parent))
 
 import argparse
 import json

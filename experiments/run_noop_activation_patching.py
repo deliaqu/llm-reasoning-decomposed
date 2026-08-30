@@ -13,6 +13,8 @@ Usage:
         --scope attn_head --layers 20 25 30 35 40
     python run_noop_activation_patching.py --plot_only
 """
+import sys as _sys, pathlib as _pathlib
+_sys.path.insert(0, str(_pathlib.Path(__file__).resolve().parent.parent))
 import argparse
 import json
 import os

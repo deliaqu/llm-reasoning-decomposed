@@ -11,6 +11,8 @@ readiness is linearly visible; this script asks whether patched question
 activations causally contribute to that readiness under a fixed downstream CoT
 trace.
 """
+import sys as _sys, pathlib as _pathlib
+_sys.path.insert(0, str(_pathlib.Path(__file__).resolve().parent.parent))
 
 import argparse
 import json

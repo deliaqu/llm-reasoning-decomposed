@@ -47,7 +47,7 @@ from config import LOGIT_LENS_RESULT_DIR, MODEL_NAME_MAP
 OUT_DIR = Path(LOGIT_LENS_RESULT_DIR).parent / "op_multiset_probe"
 HS_DIR  = Path(LOGIT_LENS_RESULT_DIR).parent / "template_similarity"
 
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from paths import RESULT_DIR
 
 

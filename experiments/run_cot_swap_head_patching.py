@@ -24,6 +24,8 @@ Usage:
 
     python run_cot_swap_head_patching.py --plot_only --label wrong_dir_1em4
 """
+import sys as _sys, pathlib as _pathlib
+_sys.path.insert(0, str(_pathlib.Path(__file__).resolve().parent.parent))
 
 import argparse
 import hashlib

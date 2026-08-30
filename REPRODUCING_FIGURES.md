@@ -10,19 +10,19 @@ Hugging Face. Swap `--model_id` for the appendix robustness models
 | Paper artifact | Command |
 |---|---|
 | Figure 1 — pipeline overview (TikZ, inline) | inline LaTeX (no data) |
-| Figure 2a — template cosine (Stage 1) | `python run_template_similarity.py --mode direct --correct_only` |
-| Figure 2b — presence probe (Stages 1, 3, 4) | `python run_presence_probe.py --dataset gsm_symbolic --mode direct --correct_only` |
-| Figure 3 — Stage-2 patching schematic | `python plot_p1_stage2_method.py` (schematic, no data) |
-| Figure 4a — question-span patching (Stage 2) | `python run_cot_swap_activation_patching.py --contrast p1_vs_padded_symbolic` |
-| Figure 4b — commit-readiness (Stage 2) | Run once per scope: `python run_cot_swap_activation_patching.py --contrast p1_vs_padded_symbolic --cot_source symbolic_aligned --position cot_end --scope layer`; repeat with `--scope mlp` and `--scope attn_output` |
-| Figure 5a — cot_boundary value-tokens (Stage 3) | `python run_noop_activation_patching.py --experiment cot_boundary --pair_dataset gsm_sym_within_template --patch_positions value_tokens --scope layer` |
-| Figure 5b — direct prompt-end decomposition (Stage 3) | Run once per scope: `python run_noop_activation_patching.py --experiment direct --pair_dataset gsm_sym_within_template --patch_positions prompt_end --scope layer`; repeat with `--scope mlp` and `--scope attn_output` |
-| Figure 6 — NoOp fragility (Stage 2 break test) | `python run_noop_activation_patching.py --experiment cot_boundary --pair_dataset filler_df_vs_noop_clean_tfm` |
-| Figure 7 — engagement-anchored DLA schematic | `python plot_dla_method.py` (schematic, no data) |
-| Figure 19 — SVAMP four-stage signatures (appendix) | `python data_scripts/svamp/build_svamp_probe_metadata.py` → `python run_svamp_presence_probe.py --mode direct --correct_only`; operand and answer rows use `run_svamp_variants_presence_probe.py` and `diag_svamp_answer_within_problem.py` |
-| Tables 1 / 2 — head ablation + amplification | `python run_cot_swap_dla.py --contrast filler_df_correct_vs_noop_clean_wrong` → `python run_cot_swap_head_scaling.py --contrast filler_df_correct_vs_noop_clean_wrong --side noop --patch_position cot_end` |
-| Table 3 — failure classification under ablation | Roll-outs: `python run_cot_swap_head_scaling.py --contrast filler_df_correct_vs_noop_clean_wrong --side noop --scale 0`; the blind annotation sheets and adjudicated labels are in `error_typing_review/` |
-| PhantomWiki probes (appendix, in text) | `bash data_scripts/phantomwiki/generate_universes.sh` → `python data_scripts/phantomwiki/build_phantomwiki_dataset.py` → `python run_phantomwiki_role_probe.py`; the reported chain-membership value is the difficulty-matched contrast, `python diag_role_probe_adjacency_matched_dm.py`, with `diag_role_probe_renamed_negatives.py` as the copy-identity control |
+| Figure 2a — template cosine (Stage 1) | `python experiments/run_template_similarity.py --mode direct --correct_only` |
+| Figure 2b — presence probe (Stages 1, 3, 4) | `python experiments/run_presence_probe.py --dataset gsm_symbolic --mode direct --correct_only` |
+| Figure 3 — Stage-2 patching schematic | `python plotting/plot_p1_stage2_method.py` (schematic, no data) |
+| Figure 4a — question-span patching (Stage 2) | `python experiments/run_cot_swap_activation_patching.py --contrast p1_vs_padded_symbolic` |
+| Figure 4b — commit-readiness (Stage 2) | Run once per scope: `python experiments/run_cot_swap_activation_patching.py --contrast p1_vs_padded_symbolic --cot_source symbolic_aligned --position cot_end --scope layer`; repeat with `--scope mlp` and `--scope attn_output` |
+| Figure 5a — cot_boundary value-tokens (Stage 3) | `python experiments/run_noop_activation_patching.py --experiment cot_boundary --pair_dataset gsm_sym_within_template --patch_positions value_tokens --scope layer` |
+| Figure 5b — direct prompt-end decomposition (Stage 3) | Run once per scope: `python experiments/run_noop_activation_patching.py --experiment direct --pair_dataset gsm_sym_within_template --patch_positions prompt_end --scope layer`; repeat with `--scope mlp` and `--scope attn_output` |
+| Figure 6 — NoOp fragility (Stage 2 break test) | `python experiments/run_noop_activation_patching.py --experiment cot_boundary --pair_dataset filler_df_vs_noop_clean_tfm` |
+| Figure 7 — engagement-anchored DLA schematic | `python plotting/plot_dla_method.py` (schematic, no data) |
+| Figure 19 — SVAMP four-stage signatures (appendix) | `python data_scripts/svamp/build_svamp_probe_metadata.py` → `python experiments/run_svamp_presence_probe.py --mode direct --correct_only`; operand and answer rows use `run_svamp_variants_presence_probe.py` and `diag_svamp_answer_within_problem.py` |
+| Tables 1 / 2 — head ablation + amplification | `python experiments/run_cot_swap_dla.py --contrast filler_df_correct_vs_noop_clean_wrong` → `python experiments/run_cot_swap_head_scaling.py --contrast filler_df_correct_vs_noop_clean_wrong --side noop --patch_position cot_end` |
+| Table 3 — failure classification under ablation | Roll-outs: `python experiments/run_cot_swap_head_scaling.py --contrast filler_df_correct_vs_noop_clean_wrong --side noop --scale 0`; the blind annotation sheets and adjudicated labels are in `error_typing_review/` |
+| PhantomWiki probes (appendix, in text) | `bash data_scripts/phantomwiki/generate_universes.sh` → `python data_scripts/phantomwiki/build_phantomwiki_dataset.py` → `python experiments/run_phantomwiki_role_probe.py`; the reported chain-membership value is the difficulty-matched contrast, `python diagnostics/diag_role_probe_adjacency_matched_dm.py`, with `diag_role_probe_renamed_negatives.py` as the copy-identity control |
 
 `--model_id meta-llama/Llama-3.3-70B-Instruct` is the default. All `run_*` scripts
 accept `--help` for their full argument surface; `--plot_only` regenerates
@@ -44,13 +44,13 @@ passes.
 7. **Generalization** (appendix): build the datasets under `data_scripts/`, then
    `run_svamp_presence_probe.py` / `run_phantomwiki_role_probe.py` and the
    matching `diag_*` contrasts
-8. **Render PDFs**: `python paper_render.py`
+8. **Render PDFs**: `python plotting/paper_render.py`
 
 ## Notes
 
 - For 70B activations the hidden-state cache is large (~100 GB per mode for
   paired datasets). Override `CACHE_DIR` via the env var:
-  `CACHE_DIR=/big/disk python run_template_similarity.py ...`.
+  `CACHE_DIR=/big/disk python experiments/run_template_similarity.py ...`.
 - The interpretability scripts expect inference outputs (model generations +
   behavioural-correctness labels) to live at
   `<repo>/results/disentangled_evaluation/transformers_direct/...`. Generate them

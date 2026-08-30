@@ -15,6 +15,8 @@ Usage:
     python run_noop_target_logit_lens.py --model_id meta-llama/Llama-3.3-70B-Instruct
     python run_noop_target_logit_lens.py --model_id meta-llama/Llama-3.3-70B-Instruct --plot_only
 """
+import sys as _sys, pathlib as _pathlib
+_sys.path.insert(0, str(_pathlib.Path(__file__).resolve().parent.parent))
 
 import argparse
 import ast

@@ -19,6 +19,8 @@ Usage:
     python run_cot_swap_logit_lens.py --contrast p1_vs_symbolic --padded_dataset all --p1_value_subset with_value
     python run_cot_swap_logit_lens.py --contrast p1_vs_padded_symbolic --padded_dataset delta0
 """
+import sys as _sys, pathlib as _pathlib
+_sys.path.insert(0, str(_pathlib.Path(__file__).resolve().parent.parent))
 
 import json
 import argparse

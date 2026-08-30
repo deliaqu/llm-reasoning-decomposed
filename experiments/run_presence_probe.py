@@ -62,7 +62,7 @@ from run_op_multiset_probe import op_multiset
 from run_template_similarity import (
     _correctness_col, _coerce_bool, cache_path, load_gsm_dataset, meta_path,
 )
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from paths import RESULT_DIR as _DE_RESULT_DIR
 
 OUT_DIR = Path(LOGIT_LENS_RESULT_DIR).parent / "presence_probe"

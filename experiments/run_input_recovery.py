@@ -59,7 +59,7 @@ from utils.noop_utils import load_model, parse_symbol_bindings
 OUT_DIR = Path(LOGIT_LENS_RESULT_DIR).parent / "input_recovery"
 HS_DIR  = Path(LOGIT_LENS_RESULT_DIR).parent / "template_similarity"
 
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from paths import RESULT_DIR
 
 

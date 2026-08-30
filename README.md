@@ -24,53 +24,57 @@ annotation artifacts for the failure-classification experiment.
 ├── LICENSE
 ├── REPRODUCING_FIGURES.md                # figure/table → command mapping
 ├── requirements.txt
+│
+│   # Root modules, imported by everything below
 ├── config.py                             # paths, dataset metadata, model id → short-name map
 ├── paths.py                              # path constants (DATA_DIR, RESULT_DIR, CACHE_DIR)
 ├── instructions.py                       # prompt templates + TASK_CONFIG dataset registry
-├── extract_hidden_states.py              # residual-stream activation cache
+├── evaluation_utils.py                   # answer extraction and scoring
+├── utils/                                # shared helpers (hooks, logit lens, probes, plotting)
 │
-│   # Stage identification (Section 5)
-├── run_template_similarity.py            # residual cosine, stage boundaries (Fig 1a)
-├── run_presence_probe.py                 # entity/operator/number/answer probes (Fig 1b)
-├── run_cot_swap_activation_patching.py   # Stage 2 cross-prompt patching (Fig 3)
-├── run_within_template_cot_prompt_end_patching.py  # Stage 3 (Fig 4)
-├── run_noop_activation_patching.py       # within-template + NoOp patching (Fig 4, 5)
+├── experiments/                          # every experiment driver
+│   ├── extract_hidden_states.py          #   residual-stream activation cache
+│   │  # Stage identification (Section 5)
+│   ├── run_template_similarity.py        #   residual cosine, stage boundaries (Fig 2a)
+│   ├── run_presence_probe.py             #   entity/operator/number/answer probes (Fig 2b)
+│   ├── run_cot_swap_activation_patching.py            # Stage 2 patching (Fig 4)
+│   ├── run_within_template_cot_prompt_end_patching.py # Stage 3 (Fig 5)
+│   ├── run_noop_activation_patching.py   #   within-template + NoOp patching (Fig 5, 6)
+│   │  # NoOp diagnosis (Section 6)
+│   ├── run_cot_swap_dla.py               #   engagement-anchored DLA per head
+│   ├── run_cot_swap_dla_divergence.py    #   divergence-anchored DLA helper
+│   ├── run_cot_swap_head_scaling.py      #   head ablation / amplification (Tables 1, 2)
+│   │  # Transfer (Appendix)
+│   ├── run_svamp_presence_probe.py       #   SVAMP four-stage signatures (Fig 19)
+│   ├── run_svamp_variants_presence_probe.py  # operand-resampled within-problem contrasts
+│   ├── run_phantomwiki_presence_probe.py #   PhantomWiki question-level probes
+│   ├── run_phantomwiki_role_probe.py     #   relation / chain-membership / answer probes
+│   │  # Inference, evaluation, and supporting runs
+│   ├── run_inference_transformers_direct.py, run_evaluation.py
+│   └── run_cot_swap_head_patching.py, run_cot_swap_logit_lens.py,
+│       run_attention_analysis.py, run_noop_dla.py, run_noop_target_logit_lens.py,
+│       run_input_recovery.py, run_op_multiset_probe.py
 │
-│   # NoOp diagnosis (Section 6)
-├── run_cot_swap_dla.py                   # engagement-anchored DLA per head
-├── run_cot_swap_dla_divergence.py        # divergence-anchored DLA helper
-├── run_cot_swap_head_scaling.py          # head ablation / amplification (Tables 2, 3)
-├── error_typing_review/                  # blind failure-classification sheets (Table 4)
+├── diagnostics/                          # controls that qualify a headline number
+│   ├── diag_svamp_answer_within_problem.py  # within-problem answer contrast
+│   ├── diag_role_probe_adjacency_matched.py     # matched chain-membership contrast
+│   ├── diag_role_probe_adjacency_matched_dm.py  #   + difficulty matching (reported value)
+│   └── diag_role_probe_renamed_negatives.py     # copy-identity shortcut control
 │
-│   # Generalization to other datasets and tasks (Appendix)
-├── run_svamp_presence_probe.py           # SVAMP four-stage signatures (Table 10)
-├── run_svamp_variants_presence_probe.py  # operand-resampled within-problem contrasts
-├── diag_svamp_answer_within_problem.py   # within-problem answer contrast
-├── run_phantomwiki_presence_probe.py     # PhantomWiki question-level probes
-├── run_phantomwiki_role_probe.py         # relation / chain-membership / answer probes
-├── diag_role_probe_adjacency_matched.py     # matched chain-membership contrast
-├── diag_role_probe_adjacency_matched_dm.py  #   + difficulty matching (reported value)
-├── diag_role_probe_renamed_negatives.py     # copy-identity shortcut control
+├── plotting/                             # everything that draws a paper figure
+│   ├── paper_render.py                   #   canonical renderer for the data figures
+│   ├── plot_p1_stage2_method.py          #   Stage-2 patching schematic (Fig 3)
+│   ├── plot_dla_method.py                #   engagement-anchored DLA schematic (Fig 7)
+│   └── plot_svamp_transfer.py            #   SVAMP transfer curves (Fig 19)
 │
-│   # Inference and evaluation
-├── run_inference_transformers_direct.py  # generation + hidden-state capture
-├── run_evaluation.py, evaluation_utils.py
-│
-│   # Supporting / import-only
-├── run_cot_swap_head_patching.py, run_cot_swap_logit_lens.py,
-├── run_attention_analysis.py, run_noop_dla.py, run_noop_target_logit_lens.py,
-├── run_input_recovery.py, run_op_multiset_probe.py
-│
-├── paper_render.py                       # canonical figure renderer
+├── error_typing_review/                  # blind failure-classification sheets (Table 3)
 ├── data_scripts/                         # dataset construction (SVAMP, PhantomWiki)
-├── data/                                 # datasets (see data/README.md)
-└── utils/                                # shared helpers (hooks, logit lens, plotting)
+└── data/                                 # datasets (see data/README.md)
 ```
 
-The scripts are plain Python CLIs; invoke each directly (`python run_X.py ...`).
-The 70B experiments need ≥160 GB of GPU memory in total (e.g. 2× A100 80 GB or
-1× H200). Every `run_*` script accepts `--help`, and `--plot_only` re-renders
-figures from cached `.jsonl`/`.npy` outputs without re-running forward passes.
+Scripts are run from the repository root, for example
+`python experiments/run_presence_probe.py --dataset gsm_symbolic --mode direct`.
+Each one puts the root on `sys.path` itself, so no installation step is needed.
 
 ## Datasets
 

@@ -21,7 +21,7 @@ import numpy as np
 import torch
 from tqdm import tqdm
 
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from paths import CACHE_DIR
 from instructions import TASK_CONFIG
 from utils.data_utils import (
