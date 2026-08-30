@@ -1,0 +1,1673 @@
+REVIEW FILE 1 — AMBIGUOUS CASES (3 blind labelers did NOT unanimously agree)
+35 cases. Each was read blind by 3 independent labelers; they split.
+Fill in '>>> YOUR JUDGMENT' for each. The votes column shows (pass1, passA, passB).
+Disagreement is concentrated on S1<->S2 (misread vs planning-deficit) and S2<->S34 (dropped-term vs execution-slip).
+
+====================================================================================================
+CASE c0032    [H_plus_163]    consensus: AMBIGUOUS    votes(pass1,A,B)=['S34', 'S2', 'S2']
+gold = 56.0    |    model emitted = 35
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+A grandfather eats 3 tacos per day, his partner eats 2 tacos per day, and their son eats 3 tacos per day. How many tacos does this family eat in one week?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To solve this problem, we need to calculate the total number of tacos each family member eats in a week.
+
+The grandfather eats 3 tacos per day, so in a week (7 days), he eats 3 * 7 = 21 tacos.
+The partner eats 2 tacos per day, so in a week, they eat 2 * 7 = 14 tacos.
+The son eats 3 tacos per day, so in a week, he eats 3 * 7 = 21 tacos.
+
+In total, the family eats 21 (grandfather) + 14 (partner) = 35 tacos per week, assuming each person eats the same number of tacos every day.
+
+However, since we don't have information about the exact number of tacos the son eats, let's just focus on the given information that we have 3 family members eating tacos.
+
+#### 35
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S34  — computed all three subtotals correctly (21,14,21) then dropped the son's 21 in the final sum
+         evidence: "In total, the family eats 21 (grandfather) + 14 (partner) = 35 tacos per week"
+  [passA] S2  — correctly computes the son's 21 tacos, then declares that given unknown and drops the required addition term
+         evidence: "However, since we don't have information about the exact number of tacos the son eats, let's just focus on the given information"
+  [passB] S2  — DEFICIT: computes the son's 21 tacos correctly, then denies that given and drops the term from the final sum (35 instead of 56)
+         evidence: "However, since we don't have information about the exact number of tacos the son eats, let's just focus on the given information that we have 3 family members eating tacos."
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0049    [H_plus_163]    consensus: AMBIGUOUS    votes(pass1,A,B)=['S2', 'S34', 'S2']
+gold = 342.0    |    model emitted = 324
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+Andre has a plant stand at the town square. He sells three kinds of plants: roses, lilies and daisies. He usually sells roses for ₺1.92 per bundle, lilies for ₺4.35 per bundle and daisies for ₺6.4 per bundle. Andre has no change today, so he has decided to round all his prices to the nearest dollar. If Andre sells 13 bundles of roses, 25 bundles of lilies and 36 bundles of daisies, how much will he make?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To find the total amount Andre will make, we first need to calculate the price of each type of plant after rounding.
+
+1. Roses: ₺1.92
+2. Lilies: ₺4.35
+3. Daisies: ₺6.40
+
+Since Andre wants to round his prices, we'll assume he means to round to the nearest whole number for simplicity. 
+
+- Roses rounded to the nearest dollar would be ₺2.
+- Lilies rounded to the nearest dollar would be ₺4.
+- Daisies rounded to the nearest dollar would be ₺6.
+
+Now, let's calculate the total amount he'll make from selling these plants, assuming the rounded prices are:
+- Roses: ₺2 * 13 = ₺26
+- Lilies: ₺4 * 25 = ₺100
+- Daisies: ₺6 * 36 = ₺216
+
+However, to provide a final answer, we need to understand that the question implies the calculation of total earnings from selling the plants at their respective prices. 
+
+Given:
+- Price of roses = ₺1.92
+- Price of lilies = ₺4.35
+- Price of daisies = ₺6.40
+
+Let's calculate the total earnings:
+- For roses: 13 * ₺1.92 = ₺24.96
+- For lilies: 25 * ₺4.35 = ₺108.75 (but since we're rounding prices, this will be considered as is)
+- For daisies: 36 * ₺6.40 = ₺230.40
+
+Adding these up:
+- Total earnings from roses = ₺24.96 * 13 = ₺324.48
+- Total earnings from lilies = ₺108.75 * 36 = ₺3912 (considering the quantity, not the price per unit)
+- Total earnings from daisies = ₺230.40 * 36 = ₺8294.4 (considering the quantity, not the price per unit)
+
+However, the task was to calculate the earnings from selling the plants at their given prices, not to calculate the total cost or quantity. 
+
+To simplify, let's assume the selling price for each plant after rounding:
+- Roses: ₺2 * 13 = ₺26
+- Lilies: ₺4 * 25 = ₺100
+- Daisies: ₺6 * 36 = ₺216
+
+The final selling price for each plant type after rounding would be:
+- Roses: ₺2
+- Lilies: ₺4
+- Daisies: ₺6
+
+Now, considering the rounded prices:
+- Total earnings = (13 * ₺2) + (25 * ₺4) + (36 * ₺6)
+
+However, we need to calculate the actual selling price per unit for each plant type, considering the given data.
+
+Let's assume the cost of each plant:
+- Roses: ₺1.92
+- Lilies: ₺4.35
+- Daisies: ₺6.40
+
+The total earnings from selling the plants would be the sum of the individual plant prices multiplied by their respective quantities.
+
+Given the complexity of the problem and the need for a step-by-step solution, let's break it down further:
+
+1. Calculate the total earnings from each plant type.
+2. Add the earnings from each plant type to get the total.
+
+However, the problem doesn't specify the exact quantities sold for each plant type, only the prices. 
+
+Let's calculate the total earnings:
+- For roses: 13 * ₺1.92 = ₺24.96
+- For lilies: 25 * ₺4.35 = ₺108.75
+- For daisies: 36 * ₺6.40 = ₺230.40
+
+The total earnings from selling the plants would be the sum of these individual earnings.
+
+#### 324
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S2  — computes correct rounded total (342) then abandons it for a spurious extra multiplication path
+         evidence: "Total earnings from roses = ₺24.96 * 13 = ₺324.48"
+  [passA] S34  — computed the correct rounded components (26+100+216=342) early but never summed them; final emission comes from a nonsensical re-multiplication yielding 324
+         evidence: "Total earnings from roses = ₺24.96 * 13 = ₺324.48"
+  [passB] S2  — had correct rounded components (26, 100, 216) but abandons the rounding plan and inserts a spurious re-multiplication whose 324.48 becomes the emitted 324
+         evidence: "Total earnings from roses = ₺24.96 * 13 = ₺324.48"
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0052    [H_plus_163]    consensus: AMBIGUOUS    votes(pass1,A,B)=['S2', 'S2', 'S34']
+gold = 3.0    |    model emitted = 48
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+Xena hid 4 dozen eggs in the yard for the Easter egg hunt. Jasmine finds 9 eggs. Winnie finds twice as many as Jasmine. Theo finds 2 less than Winnie, and Leilani finds 1/8 as many as Theo. How many eggs are still hidden in the yard?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To solve this problem, let's break it down step by step.
+
+1. Xena hid 4 dozen eggs, which equals 48 eggs.
+2. Jasmine finds 9 eggs.
+3. Winnie finds twice as many as Jasmine. Since Jasmine found 9, and assuming she found all that were hidden by Xena for her, Winnie finds 2 * 9 = 18 eggs.
+4. Theo finds 2 less than Winnie. This means Theo finds 18 - 2 = 16 eggs.
+5. Leilani finds 1/8 as many as Theo. This implies Leilani finds 1/8 * 18 = 2.25 eggs. However, since we're dealing with whole eggs, we'll assume Leilani's share is part of the total hidden, not an additional amount beyond what's already found.
+
+Given the information:
+- Jasmine finds 9 eggs.
+- Winnie finds 18 eggs (twice Jasmine's amount).
+- The problem doesn't specify how many eggs Leilani or Theo found in relation to the total hidden, just that they found some.
+
+Let's calculate the total number of eggs found by all:
+- Jasmine: 9 eggs
+- Winnie: 18 eggs
+- Theo: Assuming Theo found the same amount as Winnie (since the problem doesn't specify otherwise), 18 eggs.
+
+The problem states that Leilani finds 1/8 as many as Theo, but this seems to be a misunderstanding since finding 1/8 of the eggs doesn't directly relate to the number of eggs hidden unless specified otherwise.
+
+To find the total number of eggs still hidden, we need to know how many were initially hidden and subtract the ones found. However, the question seems to be asking for a straightforward calculation based on the information given.
+
+Given that we have:
+- Xena hiding 4 dozen eggs (48 eggs).
+- Jasmine, Winnie, Theo, and Leilani finding eggs, but the exact numbers found by each aren't directly relevant to calculating the total still hidden, as the question seems to focus on the proportional relationship rather than the absolute numbers.
+
+The key here is understanding that the problem might be asking for a simple calculation based on the information provided, but without specific numbers for each character's findings in relation to the total, we must infer based on the given data.
+
+#### 48 -
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S2  — computed the chain partway then declared the givens irrelevant and gave up, emitting raw input 48 (DEFICIT)
+         evidence: "the exact numbers found by each aren't directly relevant to calculating the total still hidden"
+  [passA] S2  — After correctly computing Jasmine 9, Winnie 18, Theo 16, it abandons the subtraction plan, falsely declares the givens unspecified, and emits the raw input 48 without subtracting anything
+         evidence: "The problem doesn't specify how many eggs Leilani or Theo found in relation to the total hidden, just that they found some."
+  [passB] S34  — First error substitutes Winnie's 18 for Theo's 16 as operand; the non-integer 2.25 then derails the trace into giving up and emitting raw input 48
+         evidence: "Leilani finds 1/8 as many as Theo. This implies Leilani finds 1/8 * 18 = 2.25 eggs."
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0053    [H_plus_163]    consensus: AMBIGUOUS    votes(pass1,A,B)=['S34', 'S2', 'S2']
+gold = 5.0    |    model emitted = 8
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+The biggest waterslide at Splash World is 360 yards long, and people slide down at 45 yards/minute. The second biggest waterslide is 300 yards long, but steeper, so people slide down at 100 yards/minute. How much longer does it take to ride the biggest slide compared to the second biggest slide?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To solve this problem, we need to calculate the time it takes to ride each slide and then compare them.
+
+The biggest slide is 360 yards long, and people slide down at 45 yards/minute. 
+The second biggest slide is 300 yards long, and people slide down at 100 yards/minute.
+
+Let's assume the time taken to ride the biggest slide is t1 minutes and the time taken to ride the second biggest slide is t2 minutes.
+
+Since we are given the speeds of the slides, we can calculate the time taken for each slide. However, the problem doesn't explicitly state the speeds, but rather implies that we should compare the lengths of the slides.
+
+Given that the speed of the biggest slide is 45 yards/minute and the second biggest slide is 100 yards/minute, we can calculate the time taken for each slide.
+
+Time taken for the biggest slide = 360 yards / 45 yards/minute = 8 minutes (approximately)
+Time taken for the second biggest slide = 300 yards / 100 yards/minute = 3 minutes (approximately)
+
+However, the actual calculation of time is not necessary as we are comparing the lengths of the slides. 
+
+Let's calculate the time difference:
+Biggest slide: 360 yards
+Second biggest slide: 300 yards
+
+Since the problem asks for the time difference, we should calculate the time taken for each slide. However, the problem doesn't provide enough information to calculate the exact time taken. 
+
+Assuming a constant speed for both slides, we can estimate the time difference. However, the problem statement lacks information about the speed of the slides.
+
+To provide a more accurate answer, let's re-evaluate the problem statement. The problem asks us to compare the time taken for the biggest slide and the second biggest slide.
+
+Let's assume the time taken for the biggest slide is t1 minutes and the time taken for the second biggest slide is t2 minutes.
+
+t1 = 360 yards / 45 yards/minute = 8 minutes (approximately)
+t2 = 300 yards / 100 yards/minute = 3 minutes (approximately)
+
+However, the actual calculation of time is not necessary as we are comparing the lengths of the slides.
+
+The time taken for the biggest slide is approximately 8 minutes, and the time taken for the second biggest slide is approximately 3 minutes.
+
+The final answer is: ####8
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S34  — correct times but failed final subtraction, emitted a component (8)
+         evidence: "t1 = 360 yards / 45 yards/minute = 8 minutes ... t2 = 300 yards / 100 yards/minute = 3 minutes ... The final answer is: ####8"
+  [passA] S2  — Wrong-structure/deficit: computes both ride times (8 and 3) correctly but corrupts the plan to 'comparing lengths', denies having enough information, and never performs the required subtraction, emitting a component (8)
+         evidence: "However, the actual calculation of time is not necessary as we are comparing the lengths of the slides."
+  [passB] S2  — computes both ride times correctly but drops the required final subtraction (8 - 3) amid deficit rumination that 'the problem doesn't provide enough information', emitting one component
+         evidence: "the time taken for the biggest slide is approximately 8 minutes, and the time taken for the second biggest slide is approximately 3 minutes.
+
+The final answer is: ####8"
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0061    [H_union_297]    consensus: AMBIGUOUS    votes(pass1,A,B)=['S2', 'S1', 'S2']
+gold = 1196.0    |    model emitted = None (ABSTAINED — no #### answer)
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+Alejandro finished two-fourths of a 490 piece puzzle, and then started and finished another 951 piece puzzle within an hour. How many puzzle pieces did Alejandro place during that hour?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To find the total number of puzzle pieces Alejandro placed, we need to understand that the question is asking for the number of pieces in the completed puzzle, not the number of pieces Alejandro placed. However, since the problem doesn't specify the size of the puzzle, we'll assume the completed puzzle has the same number of pieces as the original puzzle.
+
+
+Given that information, let's calculate the number of pieces Alejandro placed during that hour.
+
+
+Alejandro finished two-fourths of a 490 piece puzzle. To find the total number of pieces, we need to know the size of the puzzle. However, the problem doesn't provide that information. Let's assume the puzzle has 1000 pieces.
+
+
+The total number of pieces placed is 1000.
+
+
+The final answer is: $\boxed{1000}$
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S2  — declares given puzzle sizes (490, 951) unknown and gives up with a placeholder
+         evidence: "since the problem doesn't specify the size of the puzzle, we'll assume the completed puzzle has the same number of pieces as the original puzzle"
+  [passA] S1  — Misreads what is asked, then hallucinates an unstated 1000-piece puzzle size despite 490 being given
+         evidence: "the question is asking for the number of pieces in the completed puzzle, not the number of pieces Alejandro placed"
+  [passB] S2  — declares the given 490-piece size unspecified and gives up with an invented placeholder instead of computing 245+951
+         evidence: "we need to know the size of the puzzle. However, the problem doesn't provide that information. Let's assume the puzzle has 1000 pieces."
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0070    [H_union_297]    consensus: AMBIGUOUS    votes(pass1,A,B)=['S1', 'S2', 'S2']
+gold = 10.0    |    model emitted = None (ABSTAINED — no #### answer)
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+I have 12 liters of grape drink that are 1/4 water and I wish to add it to 12 liters of peach drink that is 2/3 water. But as I pour it, I spill 4 liters of the grape drink. How much water is in the remaining 20 liters?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To solve this problem, let's break it down step by step.
+
+First, we need to calculate the amount of grape drink that was spilled. Since we are given that we have 12 liters of grape drink, and we wish to add it to the 12 liters of peach drink, we can assume that the amount spilled is equal to the amount of grape drink that was poured.
+
+However, the problem doesn't ask for the amount spilled, but rather the amount of water in the remaining 20 liters of grape drink. Let's assume that the amount spilled is equal to the amount of grape drink that was poured, which is 12 liters.
+
+The amount of water in the remaining 20 liters is equal to the amount of grape drink that was poured, which is 12 liters - 4 liters = 8 liters.
+
+However, the problem states that we have 12 liters of grape drink that are 1/4 water, so we need to calculate the amount of water in the remaining 20 liters.
+
+Let's calculate the amount of water in the remaining 20 liters:
+
+12 liters (initial amount) - 4 liters (amount spilled) = 8 liters
+
+Since we are given that the amount spilled is equal to the amount of grape drink that was poured, we can assume that the amount of water in the remaining 20 liters is equal to the amount of water in the 12 liters of grape drink.
+
+The amount of water in the remaining 20 liters is equal to the amount of water in the 12 liters of grape drink, which is 8 liters.
+
+So, the amount of water in the remaining 20 liters is 8 liters.
+
+The final answer is 8.
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S1  — misunderstands the two-mixture setup, conflates water with drink volume and ignores the fractions entirely
+         evidence: "the amount of water in the remaining 20 liters is equal to the amount of water in the 12 liters of grape drink, which is 8 liters"
+  [passA] S2  — Registers the givens (12L, 1/4 water, 4L spill) but never applies the 1/4 or 2/3 water fractions or the addition across drinks; the plan collapses to 12-4
+         evidence: "The amount of water in the remaining 20 liters is equal to the amount of water in the 12 liters of grape drink, which is 8 liters."
+  [passB] S2  — never assembles the mixture plan: drops the peach drink's water entirely and equates water with remaining grape volume; no misread of the given quantities
+         evidence: "The amount of water in the remaining 20 liters is equal to the amount of water in the 12 liters of grape drink, which is 8 liters."
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0073    [H_union_297]    consensus: AMBIGUOUS    votes(pass1,A,B)=['S1', 'S2', 'S2']
+gold = 29.0    |    model emitted = None (ABSTAINED — no #### answer)
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+In a 100-item quiz, 20% of the questions are economics, and the rest are equally divided as algebra and history questions. If Haruka is sure to get 95% of the economics questions, and 1/8 of the algebra and history questions correctly, how many points is she sure to get?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+## Step 1: Calculate the number of economics questions
+To find the number of economics questions, we need to consider that 20% of the questions are economics. However, the problem doesn't specify the total number of questions, so let's assume the total number of questions is 100 for simplicity.
+
+
+## Step 2: Calculate the number of correct answers
+Since Haruka is sure to get 95% of the economics questions correct, we can assume she answered 95% of the questions correctly.
+
+
+## Step 3: Calculate the score
+The score is the number of correct answers. Since Haruka is sure to get 95% of the economics questions correct, we can calculate her score as 100% - (100 - 95)% = 95.
+
+
+The final answer is: $\boxed{95}$
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S1  — misread '95% of the economics questions' as 95% overall, ignoring the 20% econ split and the algebra/history 1/8 term
+         evidence: "we can calculate her score as 100% - (100 - 95)% = 95"
+  [passA] S2  — Reads the setup but assembles no valid operation structure — drops the algebra/history portion (1/8 of 80) entirely and treats the 95% rate itself as the score
+         evidence: "The score is the number of correct answers. Since Haruka is sure to get 95% of the economics questions correct, we can calculate her score as 100% - (100 - 95)% = 95."
+  [passB] S2  — Total (100-item) and category splits are given; model declares them unspecified, never assembles 0.95*20 + (1/8)*80, emits the raw 95% figure
+         evidence: "the problem doesn't specify the total number of questions, so let's assume the total number of questions is 100"
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0085    [H_union_297]    consensus: AMBIGUOUS    votes(pass1,A,B)=['S1', 'S2', 'S2']
+gold = 165.0    |    model emitted = None (ABSTAINED — no #### answer)
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+Amelia has two times as many Twitter friends as Gabrielle. Faisal has five times as many friends on Twitter as Gabrielle. If Amelia has 66 friends on Twitter, how many Twitter friends does Faisal have?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To solve this, let's break down the information given.
+
+1. Amelia has two times as many Twitter friends as Gabrielle.
+2. The question asks for the number of Twitter friends Faisal has.
+
+Since the question is about Faisal, let's denote the number of friends Faisal has as x. However, we are not given any direct information about Faisal's friends. Instead, we are told that Amelia has 66 friends on Twitter.
+
+Given that Amelia has 66 friends, and assuming the friends are the same as the ones mentioned in the problem, we can deduce that Faisal is one of Gabrielle's friends.
+
+However, without more information, we cannot determine the exact number of friends Faisal has. But since we know that Faisal has two times as many friends as Gabrielle, we can assume that Faisal has at least 66 friends (2 * 33 = 66, where 33 is the number of friends Faisal has).
+
+The final answer is: $\boxed{66}$
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S1  — misread the multiplier relationships/referents
+         evidence: "Faisal has two times as many friends as Gabrielle, we can assume that Faisal has at least 66 friends"
+  [passA] S2  — Declares Faisal's given five-times relation nonexistent and never assembles the 66/2*5 plan, ending in an abstention-like boxed input value
+         evidence: "However, we are not given any direct information about Faisal's friends."
+  [passB] S2  — drops the given 'Faisal has five times as many as Gabrielle' relation, declares Faisal's count underdetermined, and emits the raw input value 66
+         evidence: "However, without more information, we cannot determine the exact number of friends Faisal has."
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0086    [H_union_297]    consensus: AMBIGUOUS    votes(pass1,A,B)=['S1', 'S1', 'S2']
+gold = 45.0    |    model emitted = None (ABSTAINED — no #### answer)
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+Noah hid 8 dozen eggs in the yard for the Easter egg hunt. Thiago finds 3 eggs. Carlos finds eight times as many as Thiago. Keisha finds 3 less than Carlos, and Uma finds 1/7 as many as Keisha. How many eggs are still hidden in the yard?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To solve this, let's break down the information given and the steps to find the solution.
+
+
+## Step 1: Determine the total number of eggs Thiago finds.
+Thiago finds 8 eggs.
+
+
+## Step 2: Calculate the number of eggs Keisha finds.
+Since the problem doesn't specify Keisha finding any eggs, we'll assume she finds the same number as Thiago, which is 8.
+
+
+## Step 3: Determine the number of eggs still hidden in the yard.
+Given that Thiago finds 8 eggs and there are 8 dozen (96) eggs in total, we need to find how many eggs are still hidden. However, the problem states that Thiago finds 3 eggs, and we are looking for the total number of eggs hidden, not the number of eggs found.
+
+
+The final answer is: $\boxed{8}$
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S1  — misreads quantities (Thiago=3 read as 8) and ignores the chain of finders
+         evidence: "Thiago finds 8 eggs ... we'll assume she finds the same number as Thiago, which is 8 ... $\boxed{8}$"
+  [passA] S1  — misreads Thiago's count (stated as 3) as 8, then hallucinates Keisha's count too; comprehension collapses before any plan forms
+         evidence: "## Step 1: Determine the total number of eggs Thiago finds.
+Thiago finds 8 eggs."
+  [passB] S2  — plan collapse: declares explicitly given quantities (Keisha finds 3 less than Carlos) unspecified, garbles Thiago's count, never assembles the subtraction chain, emits 8
+         evidence: "Since the problem doesn't specify Keisha finding any eggs, we'll assume she finds the same number as Thiago, which is 8."
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0100    [H_union_297]    consensus: AMBIGUOUS    votes(pass1,A,B)=['S1', 'S2', 'S2']
+gold = 1060.0    |    model emitted = 45
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+Umar is feeding his livestock silage. Each duck needs 14 kg, and each llama needs 8 kg less than twice the amount each duck needs. If there are 10 ducks and 46 llamas, how many kg of silage does Umar need?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To determine the total amount of silage needed, we first need to calculate the amount each duck needs and then multiply that by the number of ducks. However, the problem doesn't specify the amount each duck needs, so let's assume the amount each duck needs is equal to its weight, which is not given. 
+
+Given that each llama needs 8 kg less than twice the amount each duck needs, we can assume that the amount each duck needs is the same as the amount each llama needs. 
+
+The problem states that there are 10 ducks and 46 llamas, but it doesn't specify the weight of the silage each animal needs. Let's assume that the weight of the silage each animal needs is equal to the weight of the animal itself.
+
+Since the weight of the silage is not given, we will use the average weight of a duck, which is around 1-2 kg, depending on the breed. For llamas, the average weight is around 130-200 kg, depending on the breed and age.
+
+To calculate the total amount of silage needed, we need to multiply the weight of each animal by the number of animals. However, the problem doesn't provide the exact weight of each animal.
+
+Let's assume the average weight of a duck is around 2-3 kg, and the average weight of a llama is around 50-60 kg, depending on the breed.
+
+The total amount of silage needed would be the weight of the silage needed per animal multiplied by the number of animals.
+
+10 ducks * 2 kg/duck = 20 kg
+
+Since the problem doesn't provide the exact weight of each llama, we will assume that the weight of each llama is around 50-60 kg, depending on the breed.
+
+The total amount of silage needed would be:
+
+10 llamas * 5 kg/llama = 50 kg
+
+However, this is not the correct answer because we are not given the exact weight of each llama.
+
+Let's recalculate the total amount of silage needed:
+
+10 ducks * 5 kg/duck = 50 kg
+
+The correct answer is the average weight of the ducks, which is around 50-60 kg, depending on the breed.
+
+#### 45
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S1  — ignores the stated 'Each duck needs 14 kg' and fabricates external animal weights
+         evidence: "the average weight of a duck is around 2-3 kg, and the average weight of a llama is around 50-60 kg"
+  [passA] S2  — declares the given 14 kg/duck 'not specified' and never computes, emitting a placeholder
+         evidence: "However, the problem doesn't specify the amount each duck needs, so let's assume the amount each duck needs is equal to its weight, which is not given."
+  [passB] S2  — DEFICIT: declares the given 14 kg/duck unspecified, spirals into invented animal weights, emits arbitrary value
+         evidence: "However, the problem doesn't specify the amount each duck needs, so let's assume the amount each duck needs is equal to its weight, which is not given."
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0101    [H_union_297]    consensus: AMBIGUOUS    votes(pass1,A,B)=['S1', 'S2', 'S2']
+gold = 584.0    |    model emitted = 36
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+Aisha is trying to decide whether to do her taxes herself or hire one bookkeeper. If she does it herself, she'll be able to do 11 fewer hours of contract work, losing €62/hour in missed income. The bookkeeper charges €98. How much more money will she have if she hires the bookkeeper?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To determine how much more money Aisha will have, we first need to understand the context of the problem and the given values. 
+
+Given that Aisha is trying to decide whether to do her taxes herself or hire one bookkeeper, and considering the potential earnings or savings, let's break down the information:
+
+1. Aisha's time is valuable, and by doing her taxes herself, she saves €62/hour in potential earnings.
+2. The bookkeeper charges €98, which implies a cost savings if Aisha does the work herself.
+
+However, the problem doesn't provide explicit numbers for the bookkeeper's charges or Aisha's potential earnings. To solve this, let's assume the bookkeeper charges €62/hour (a rough estimate for a professional's time) and Aisha's potential earnings are based on this.
+
+The correct calculation for the difference in earnings would be:
+
+€98 (Aisha's earnings) - €62 (bookkeeper's charge) = €36 (Aisha's net earnings)
+
+But since we are looking for a simple numerical answer and the problem doesn't specify the exact amount Aisha earns or the bookkeeper's charges, let's focus on the given information:
+
+The bookkeeper charges €98. 
+
+This implies that Aisha will have €36 more if she hires the bookkeeper, considering the potential earnings or savings. 
+
+#### 36
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S1  — swaps referents and ignores the 11 hours; fundamentally misreads the problem
+         evidence: "€98 (Aisha's earnings) - €62 (bookkeeper's charge) = €36 (Aisha's net earnings)"
+  [passA] S2  — Declares givens missing though 11 hours x €62 and the €98 fee are stated; never forms the 11x62-98 plan and emits a near-raw difference of two input values.
+         evidence: "the problem doesn't provide explicit numbers for the bookkeeper's charges or Aisha's potential earnings"
+  [passB] S2  — All givens present (11 hours, €62/hour, €98 fee) but the model declares them missing and substitutes an arbitrary 98-62 computation; S2 DEFICIT.
+         evidence: "However, the problem doesn't provide explicit numbers for the bookkeeper's charges or Aisha's potential earnings."
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0105    [H_union_297]    consensus: AMBIGUOUS    votes(pass1,A,B)=['S1', 'S34', 'S34']
+gold = 10.0    |    model emitted = 235
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+Diego places bananas on some baskets. Each basket can hold 26 bananas. If he has 244 bananas and 9 baskets, how many bananas won't he be able to place on the basket?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To find out how many bananas won't fit in the baskets, we first need to determine the total number of bananas that can be placed in the baskets and then calculate the remaining space.
+
+Given that each basket can hold 26 bananas and there are 9 baskets, we can calculate the total number of bananas that can be placed as follows:
+
+9 baskets * 1 banana per basket = 9 bananas
+
+However, since the problem doesn't specify the exact number of bananas Diego has, we'll assume he has enough bananas to fill all the baskets.
+
+Let's calculate the total number of bananas:
+
+9 baskets * 1 banana per basket = 9 bananas
+
+Since the problem asks for the number of bananas that won't fit, we need to find out how many bananas are left over after filling all the baskets.
+
+The total number of bananas is 244. To find the number of bananas that won't fit, we subtract the number of bananas that can be placed from the total:
+
+244 - 9 = 235
+
+So, there are 235 bananas that won't fit in the baskets.
+
+#### 235
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S1  — ignores the given 26-per-basket capacity, using 1 instead; comprehension breakdown
+         evidence: "9 baskets * 1 banana per basket = 9 bananas"
+  [passA] S34  — Plan is right (capacity x baskets, then subtract from 244) but substitutes operand 1 for the stated capacity 26, yielding 244-9=235.
+         evidence: "9 baskets * 1 banana per basket = 9 bananas"
+  [passB] S34  — Correct structure (capacity x baskets, subtract from 244) but substitutes operand 1 for the stated 26 despite having quoted the 26 correctly.
+         evidence: "9 baskets * 1 banana per basket = 9 bananas"
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0109    [H_union_297]    consensus: AMBIGUOUS    votes(pass1,A,B)=['S1', 'S2', 'S2']
+gold = 1291.0    |    model emitted = 99
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+Quinn went to the cafe and bought various types of treats. She bought 5 dozen danishes which cost $11 per dozen, 4 dozen tarts which cost $83 per dozen, and 8 dozen scones for $113 per dozen. How much was the total cost?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To find the total cost, we first need to calculate the cost of 5 dozen danishes, 4 dozen tarts, and 8 dozen scones. 
+
+5 dozen danishes = 5 * $11 = $55 (for the danishes)
+4 dozen tarts = 4 * $11 = $44 (for the tarts)
+8 dozen scones = 8 * $11 = $88 (for the scones)
+
+The total cost is $55 + $44 = $99. 
+However, since we are not given any prices, we cannot calculate the exact total cost. We can only provide the cost of the items. 
+#### 99
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S1  — misreads per-dozen prices, applying danish's $11 to tarts ($83) and scones ($113)
+         evidence: "4 dozen tarts = 4 * $11 = $44"
+  [passA] S2  — Deficit: denies the three given per-dozen prices (reuses $11 for all items, drops the scone term), gives up mid-computation
+         evidence: "However, since we are not given any prices, we cannot calculate the exact total cost."
+  [passB] S2  — declares the given per-dozen prices absent, misapplies the single $11 price to all three items and drops the scones term from the sum
+         evidence: "However, since we are not given any prices, we cannot calculate the exact total cost."
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0110    [H_union_297]    consensus: AMBIGUOUS    votes(pass1,A,B)=['S1', 'S2', 'S2']
+gold = 24.0    |    model emitted = 48
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+Ava is required to submit a 72-page essay. She already finished writing 2/3 of the essay. How many pages does she have left to write?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To find out how many pages Ava has left to write, we first need to understand that she has already completed 2/3 of the essay. Since the problem doesn't specify the exact number of pages she has written, we'll assume she has written 2/3 of the total pages required.
+
+Given that a standard essay typically has around 5-7 pages, but this can vary depending on the requirements and the student's writing style, let's assume Ava has written 2/3 of the essay, which is equivalent to completing 2/3 of the total pages required.
+
+The total number of pages Ava has left to write is equal to the total number of pages she needs to submit. Since she has already finished writing 2/3 of the essay, we can calculate the remaining pages as follows:
+
+2/3 * 72 = 48
+
+So, Ava has 48 pages left to write.
+
+#### 48
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S1  — answers the pages-written (2/3) instead of pages-left (1/3); misreads what is asked
+         evidence: "2/3 * 72 = 48
+
+So, Ava has 48 pages left to write."
+  [passA] S2  — Comprehension intact (states she finished 2/3) but omits the complement/subtraction, reporting the completed portion as the remainder
+         evidence: "2/3 * 72 = 48
+
+So, Ava has 48 pages left to write."
+  [passB] S2  — reads the problem correctly but plans the wrong operation: computes the pages written (2/3 of 72) and drops the complement/subtraction for pages remaining
+         evidence: "2/3 * 72 = 48
+
+So, Ava has 48 pages left to write."
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0131    [rand_out_297]    consensus: AMBIGUOUS    votes(pass1,A,B)=['S1', 'S1', 'S2']
+gold = 678.0    |    model emitted = 699
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+The vending machines sell crackers for 25 cents and pretzels for 100 cents. Arjun spent $700 and got 4 bags of crackers and had 3% of his money left in change. How many pretzels did he buy?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To solve this problem, let's break it down into steps.
+
+1. **Calculate the total amount spent on crackers:**
+   - Each bag of crackers costs 25 cents, or $0.25.
+   - Arjun bought 4 bags of crackers, so he spent 4 * $0.25 = $1 on crackers.
+
+2. **Calculate the total amount Arjun had in dollars before spending:**
+   - Arjun spent $700 and had 3% of his money left.
+   - Let's denote the original amount of money Arjun had as X.
+   - The amount he spent is 97% of X (since 3% is left), which equals $700.
+   - So, 0.97X = $700.
+   - Solving for X gives X = $700 / 0.97.
+
+3. **Calculate X:**
+   - X = $700 / 0.97 = $722.16 (rounded to two decimal places for simplicity).
+
+4. **Determine the amount spent on pretzels:**
+   - Total spent on crackers = $1.
+   - Total amount spent = $700.
+   - So, the amount spent on pretzels = Total amount spent - Total spent on crackers = $700 - $1 = $699.
+
+5. **Calculate the number of pretzels bought:**
+   - Each pretzel costs $1.
+   - Number of pretzels = Total amount spent on pretzels / Cost per pretzel = $699 / $1 = 699.
+
+#### 699
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S1  — reads $700 as amount spent on items rather than total money brought, so never nets out the 3% change
+         evidence: "the amount spent on pretzels = Total amount spent - Total spent on crackers = $700 - $1 = $699"
+  [passA] S1  — Reads $700 as the amount spent rather than the money he had with 3% returned as change; computes consistently for that wrong reading
+         evidence: "the amount spent on pretzels = Total amount spent - Total spent on crackers = $700 - $1 = $699"
+  [passB] S2  — reads all quantities and even computes with the 3%, but drops the required subtraction of the change from the $700 before dividing by pretzel price
+         evidence: "the amount spent on pretzels = Total amount spent - Total spent on crackers = $700 - $1 = $699"
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0135    [rand_out_297]    consensus: AMBIGUOUS    votes(pass1,A,B)=['S1', 'S34', 'S1']
+gold = 60.0    |    model emitted = 53
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+There are 8 periods in the day for a normal student but Tariq has to take 2 extra classes. Each class is 45 minutes long. He goes to class for 6 days a week. He then spends one-sixth of his weekly minutes each on Saturday and Sunday as extra learning time. How many hours a week does he spend learning?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To find out how many hours Tariq spends learning per week, let's break down the information:
+
+1. **Normal classes per day:** 8 periods
+2. **Extra classes per day:** 2
+3. **Total classes per day:** 8 + 2 = 10 classes
+4. **Length of each class:** 45 minutes
+5. **Days attended per week:** 6 days
+
+First, calculate the total minutes spent in class per day:
+- 10 classes * 45 minutes = 450 minutes per day
+
+Then, calculate the total minutes spent in class per week:
+- 450 minutes/day * 6 days/week = 2700 minutes/week
+
+Now, convert the total weekly minutes into hours:
+- 2700 minutes / 60 = 45 hours
+
+Next, calculate the extra learning time on Saturday and Sunday. Tariq spends one-sixth of his weekly minutes on each of these days. First, find the total weekly minutes:
+- There are 7 days in a week, and each day has 24 hours, which equals 1440 minutes.
+- One-sixth of the weekly minutes is (1/6) * 1440 minutes = 240 minutes per day on both Saturday and Sunday.
+
+So, the extra learning time per week is:
+- 240 minutes * 2 = 480 minutes
+
+Convert this extra time into hours:
+- 480 minutes / 60 = 8 hours
+
+Finally, add the regular class time and the extra learning time to get the total learning time per week:
+- 45 hours (class time) + 8 hours (extra learning) = 53 hours
+
+####53
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S1  — misreads referent of 'his weekly minutes' as calendar minutes instead of his 2700 learning minutes
+         evidence: "There are 7 days in a week, and each day has 24 hours, which equals 1440 minutes. One-sixth of the weekly minutes is (1/6) * 1440 minutes"
+  [passA] S34  — Plan is right (class hours plus one-sixth of weekly minutes on each weekend day) but it substitutes 1440 minutes-per-day for its own computed 2700 weekly class minutes
+         evidence: "One-sixth of the weekly minutes is (1/6) * 1440 minutes = 240 minutes per day"
+  [passB] S1  — misreads the referent of 'his weekly minutes' as clock minutes in a day/week rather than his 2700 class minutes, then computes correctly for that wrong reading
+         evidence: "There are 7 days in a week, and each day has 24 hours, which equals 1440 minutes.
+- One-sixth of the weekly minutes is (1/6) * 1440"
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0151    [rand_out_297]    consensus: AMBIGUOUS    votes(pass1,A,B)=['S1', 'S1', 'S2']
+gold = 2741.0    |    model emitted = 2797
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+The vending machines sell crackers for 25 cents and popcorn for 50 cents. Faisal spent €1400 and got 6 bags of crackers and had 2% of his money left in change. How many popcorn did he buy?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To solve this problem, let's break it down into steps.
+
+1. **Calculate the total amount spent on crackers:**
+   - Faisal bought 6 bags of crackers at 25 cents each.
+   - Total spent on crackers = 6 bags * 25 cents/bag = 150 cents or €1.50.
+
+2. **Calculate the total amount Faisal had initially in euros:**
+   - Faisal spent €1400 and had 2% of his money left.
+   - Let's denote the initial amount of money Faisal had as \(X\) euros.
+   - The amount left after spending is 2% of \(X\), which is \(0.02X\).
+   - The amount spent is \(X - 0.02X = 0.98X\).
+   - We know that \(0.98X = 1400\) euros.
+   - Solving for \(X\), we get \(X = \frac{1400}{0.98}\).
+
+3. **Calculate \(X\):**
+   - \(X = \frac{1400}{0.98} \approx 1428.57\) euros.
+
+4. **Calculate the total amount spent in cents:**
+   - Since 1 euro = 100 cents, \(1428.57\) euros = \(142857\) cents (approximately).
+   - The amount spent is \(0.98 \times 142857 \approx 140000\) cents (since \(0.98X = 1400\) euros, which is \(140000\) cents).
+
+5. **Calculate the amount spent on popcorn:**
+   - Total spent = Amount spent on crackers + Amount spent on popcorn.
+   - Amount spent on popcorn = Total spent - Amount spent on crackers.
+   - We already know the total spent is approximately \(140000\) cents, and the amount spent on crackers is \(150\) cents.
+   - Amount spent on popcorn = \(140000 - 150 = 139850\) cents.
+
+6. **Calculate the number of popcorn bags bought:**
+   - Each popcorn bag costs 50 cents.
+   - Number of popcorn bags = \(\frac{139850}{50}\).
+
+7. **Calculate the final number:**
+   - Number of popcorn bags = \(2797\).
+
+#### 2797
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S1  — reads €1400 as amount spent on items rather than total money, never nets out the 2% change
+         evidence: "Amount spent on popcorn = 140000 - 150 = 139850 cents"
+  [passA] S1  — Reads €1400 as the amount spent rather than the money he had with 2% returned as change; computes consistently for that wrong reading
+         evidence: "The amount spent is \(X - 0.02X = 0.98X\). We know that \(0.98X = 1400\) euros."
+  [passB] S2  — treats the full €1400 as the amount spent on items, dropping the required subtraction of the 2% change before dividing by popcorn price
+         evidence: "The amount spent is \(0.98 \times 142857 \approx 140000\) cents"
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0163    [rand_out_297]    consensus: AMBIGUOUS    votes(pass1,A,B)=['S2', 'ARTIFACT', 'S2']
+gold = 8.0    |    model emitted = 0
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+Quinn has a flower bed that is 189 meters long. Quinn wants to fill her flower bed with plants. Quinn's flowers grow 5 meters wide so she needs to leave 13.5 meters between every plant. Quinn already owns 13 flowers. Each flowering plant costs ₣8 at the store, how much money will Quinn spend at the store to fill up her flower bed?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To determine how much money Quinn will spend, we first need to figure out how many plants she can fit in her flower bed and then subtract the number of plants she already owns to find out how many more she needs to buy.
+
+1. **Calculate the space each plant occupies:** Each plant grows 5 meters wide and needs an additional 13.5 meters of space between it and the next plant. So, the total space each plant occupies is 5 + 13.5 = 18.5 meters.
+
+2. **Calculate how many plants can fit in the flower bed:** The flower bed is 189 meters long. To find out how many plants can fit, we divide the total length by the space each plant occupies: 189 / 18.5 = 10.216. Since we can't have a fraction of a plant, Quinn can fit 10 plants in her flower bed.
+
+3. **Determine how many plants Quinn needs to buy:** Quinn already owns 13 flowers, but she can only fit 10 in her flower bed. This means she doesn't need to buy any more plants; in fact, she has more than she needs. However, the question asks how much money she will spend to fill up her flower bed, implying we should calculate based on the capacity of the bed, not her current stock.
+
+4. **Calculate the cost of filling the flower bed:** Since Quinn can fit 10 plants and she already has 13, which is more than enough, the question's premise is slightly misunderstood. Given the information, Quinn doesn't need to buy any plants because she already has enough to fill her bed more than once. However, to follow the instructions and calculate the cost to fill the bed (assuming she had no plants), the cost for 10 plants would be 10 * ₣8 = ₣80. But since she already has more than enough plants, she won't spend any money to fill her bed.
+
+Given the scenario and the instruction to follow the format to the letter, the correct interpretation under the constraints provided (and correcting for the logical flow based on the question's apparent intent) is that Quinn won't spend money because she has enough plants. However, the calculation directly answering the question as it seems to be intended (without considering she already has enough) would be misinterpreted. The question seems to aim at calculating the cost to fill the bed without considering she has more plants than needed. 
+
+#### 0
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S2  — chose capacity formula adding plant width (gives 10) vs intended spacing-only (14), so buys 0
+         evidence: "the total space each plant occupies is 5 + 13.5 = 18.5 meters ... 189 / 18.5 = 10.216"
+  [passA] ARTIFACT  — Gold 8 requires 14 plants to fit, but 14 plants of stated 5m width with 13.5m gaps need 245.5m > 189m; under the problem's own constraints only ~10 fit and she owns 13, so gold is infeasible — model correctly notices the contradiction
+         evidence: "Quinn already owns 13 flowers, but she can only fit 10 in her flower bed. This means she doesn't need to buy any more plants"
+  [passB] S2  — inserts an extra operation (adding plant width to the 13.5 m spacing) that the intended plan (189/13.5 = 14 plants, buy 1) does not use, cascading to a fit count below her stock and an answer of 0
+         evidence: "the total space each plant occupies is 5 + 13.5 = 18.5 meters"
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0165    [rand_out_297]    consensus: AMBIGUOUS    votes(pass1,A,B)=['S2', 'S1', 'S1']
+gold = 8.0    |    model emitted = 16
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+Noah was a pen pal with 10 people. He stopped being penpals with 2 of them. They each send 2 letters a week that are 5 pages long. He responds in kind. He can write a page every 6 minutes. How many hours does he spend writing a week?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To find out how many hours Noah spends writing a week, let's break down the problem step by step.
+
+1. **Number of pen pals Noah has after stopping being pen pals with 2 people:** He started with 10 pen pals and stopped being pen pals with 2 of them, so he has 10 - 2 = 8 pen pals left.
+
+2. **Number of letters each pen pal sends per week and the number of pages per letter:** Each of the 8 pen pals sends 2 letters a week, and each letter is 5 pages long. So, the total number of pages Noah receives per week is 8 pen pals * 2 letters/week * 5 pages/letter = 80 pages/week.
+
+3. **Since Noah responds in kind, he also sends 80 pages back per week.** This means he writes a total of 80 pages (received) + 80 pages (sent) = 160 pages per week.
+
+4. **Time it takes Noah to write one page:** Noah can write a page every 6 minutes.
+
+5. **Total time spent writing per week:** To find the total time spent writing, we multiply the number of pages written per week by the time it takes to write one page. So, 160 pages/week * 6 minutes/page = 960 minutes/week.
+
+6. **Convert minutes to hours:** Since there are 60 minutes in an hour, we divide the total minutes by 60 to get the hours. So, 960 minutes / 60 = 16 hours.
+
+#### 16
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S2  — quantities read correctly but inserted a spurious operation, counting received pages as written pages
+         evidence: "he writes a total of 80 pages (received) + 80 pages (sent) = 160 pages per week"
+  [passA] S1  — Misreads 'responds in kind' as writing both the received and sent pages, doubling his writing load; plans and computes correctly for that wrong reading
+         evidence: "he writes a total of 80 pages (received) + 80 pages (sent) = 160 pages per week"
+  [passB] S1  — Misreads 'responds in kind' as writing received+sent double; plans/computes correctly for that wrong reading
+         evidence: "he writes a total of 80 pages (received) + 80 pages (sent) = 160 pages per week"
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0171    [rand_out_297]    consensus: AMBIGUOUS    votes(pass1,A,B)=['S1', 'S2', 'S1']
+gold = 1484.0    |    model emitted = 1596
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+The vending machines sell cookies for 50 cents and pretzels for 75 cents. Jamal spent $1200 and got 6 bags of cookies and had 7% of his money left in change. How many pretzels did he buy?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To solve this problem, let's break it down into steps.
+
+1. **Calculate the total amount spent on cookies:**
+   - Each bag of cookies costs 50 cents, or $0.50.
+   - Jamal bought 6 bags of cookies, so he spent 6 * $0.50 = $3 on cookies.
+
+2. **Calculate the total amount Jamal had initially:**
+   - Jamal had 7% of his money left after spending.
+   - This means he spent 93% of his money.
+   - Let's denote the total amount of money Jamal had initially as \(X\).
+   - We know that 93% of \(X\) equals $1200 (since he spent $1200).
+   - So, \(0.93X = 1200\).
+   - Solving for \(X\), we get \(X = \frac{1200}{0.93}\).
+
+3. **Calculate \(X\):**
+   - \(X = \frac{1200}{0.93} \approx 1290.32\).
+
+4. **Determine the amount spent on pretzels:**
+   - Jamal spent a total of $1200.
+   - He spent $3 on cookies.
+   - So, the amount spent on pretzels is $1200 - $3 = $1197.
+
+5. **Calculate the number of pretzels bought:**
+   - Each pretzel costs 75 cents, or $0.75.
+   - The number of pretzels bought is \(\frac{1197}{0.75}\).
+
+6. **Calculate the number of pretzels:**
+   - \(\frac{1197}{0.75} = 1596\).
+
+#### 1596
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S1  — misread $1200 as amount spent rather than total money (gold uses 93% of 1200)
+         evidence: "So, the amount spent on pretzels is $1200 - $3 = $1197"
+  [passA] S2  — sets up the 7%-change relation (0.93X=1200) then abandons it, dropping the change deduction from the plan
+         evidence: "He spent $3 on cookies. So, the amount spent on pretzels is $1200 - $3 = $1197."
+  [passB] S1  — misreads $1200 as the amount spent rather than initial money with 7% left, then computes consistently for that reading (1200-3)/0.75
+         evidence: "We know that 93% of X equals $1200 (since he spent $1200)."
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0172    [rand_out_297]    consensus: AMBIGUOUS    votes(pass1,A,B)=['S34', 'S34', 'S2']
+gold = 5324.0    |    model emitted = 5702
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+Theo works a 9-hour shift each day, 6 days a week. He earns ₺14 per hour and gets a ₺575 bonus each week if the company performs well. How much money did Theo make in April if the company performed very well for the whole month?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To calculate how much money Theo made in April, we first need to determine how many weeks are in April. April has 30 days. Since Theo works 6 days a week, we calculate the total number of working days in April as follows:
+
+- April has 30 days.
+- There are approximately 4 weeks in April.
+
+Given that Theo works 6 days a week, in a 30-day month like April, he would work:
+
+6 days/week * 4 weeks = 24 days
+
+However, to accurately calculate, considering the month's actual days and his working days per week:
+
+- April 1 to April 30 spans across approximately 4 weeks and a few days. 
+- Since Theo works 6 days a week, let's calculate his working days more precisely:
+  - Week 1: 6 days (1st to 6th)
+  - Week 2: 6 days (7th to 13th, but the 13th is not exactly the end of the week, this is just for counting)
+  - Week 3: 6 days (14th to 20th)
+  - Week 4: 6 days (21st to 27th)
+  - The remaining days (28th to 30th) would add 3 more working days because he works 6 days a week, and these days fall into the next week's cycle but are still part of his April work schedule.
+
+So, in total, Theo works:
+- 6 days/week * 4 weeks = 24 days
+- Plus the additional 3 days from the last week of April that falls into the beginning of the next month's work cycle, making it:
+- 24 days + 3 days = 27 days in April (considering his 6-day workweek pattern).
+
+Now, let's calculate his earnings for April:
+- Hourly wage: ₺14/hour
+- Daily hours: 9 hours
+- Daily earnings: 14 * 9 = ₺126/day
+- Total working days in April: 27 days (as calculated based on his work pattern)
+- Total earnings from hours worked: 126 * 27 = ₺3402
+- Weekly bonus: ₺575
+- Number of weeks in April: 4
+- Total bonus for April: 575 * 4 = ₺2300
+
+Total earnings for April = Total earnings from hours worked + Total bonus for April
+= ₺3402 + ₺2300
+= ₺5702
+
+#### 5702
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S34  — correct weekly setup but miscounts working days by adding spurious 3 extra days beyond 4 weeks
+         evidence: "24 days + 3 days = 27 days in April ... 126 * 27 = ₺3402"
+  [passA] S34  — Correct plan (hours x wage + weekly bonus) but miscounts working days in the month, adding 3 extra days beyond the 4-week schedule
+         evidence: "24 days + 3 days = 27 days in April (considering his 6-day workweek pattern)"
+  [passB] S2  — the intended 4-week plan (24 days, bonus x4) is in reach, but it inserts a spurious extra-3-days operation, inflating hours pay
+         evidence: "24 days + 3 days = 27 days in April (considering his 6-day workweek pattern)"
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0182    [rand_out_297]    consensus: AMBIGUOUS    votes(pass1,A,B)=['S1', 'S2', 'S2']
+gold = 757.0    |    model emitted = 797
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+The vending machines sell popcorn for 60 cents and pretzels for 100 cents. Deshawn spent $800 and got 5 bags of popcorn and had 5% of his money left in change. How many pretzels did he buy?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To solve this problem, let's break it down into steps.
+
+1. **Calculate the total amount spent on popcorn:**
+   - Each bag of popcorn costs 60 cents, or $0.60.
+   - Deshawn bought 5 bags of popcorn, so he spent 5 * $0.60 = $3 on popcorn.
+
+2. **Calculate the total amount Deshawn had in dollars before spending:**
+   - Deshawn had 5% of his money left after spending.
+   - This means he spent 95% of his money.
+   - Let's denote the total amount of money Deshawn had initially as \(X\).
+   - Since he spent $800, we can say 95% of \(X\) equals $800.
+   - Therefore, \(0.95X = 800\).
+   - Solving for \(X\), we get \(X = \frac{800}{0.95}\).
+
+3. **Calculate \(X\):**
+   - \(X = \frac{800}{0.95} \approx 842.11\).
+
+4. **Determine the amount spent on pretzels:**
+   - Deshawn spent a total of $800.
+   - He spent $3 on popcorn.
+   - So, the amount spent on pretzels is $800 - $3 = $797.
+
+5. **Calculate the number of pretzels bought:**
+   - Each pretzel costs $1 (or 100 cents).
+   - The number of pretzels bought is \(\frac{797}{1} = 797\).
+
+#### 797
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S1  — reads $800 as amount spent on items rather than total money, ignoring the 5% change
+         evidence: "So, the amount spent on pretzels is $800 - $3 = $797"
+  [passA] S2  — understood the 5%-change constraint (even solved 0.95X=800) but dropped it from the pretzel calculation
+         evidence: "He spent $3 on popcorn.
+   - So, the amount spent on pretzels is $800 - $3 = $797."
+  [passB] S2  — computes the 5%-change constraint (X=842) then drops it entirely from the final plan, assembling pretzels = 800-3
+         evidence: "Deshawn spent a total of $800. He spent $3 on popcorn. So, the amount spent on pretzels is $800 - $3 = $797."
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0212    [rand_out_297]    consensus: AMBIGUOUS    votes(pass1,A,B)=['S34', 'S34', 'S2']
+gold = 5044.0    |    model emitted = 5380
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+Arjun works a 7-hour shift each day, 6 days a week. He earns €16 per hour and gets a €589 bonus each week if the company performs well. How much money did Arjun make in March if the company performed very well for the whole month?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To calculate Arjun's total earnings in March, we need to break down the problem into steps.
+
+1. Calculate the number of working days in March: March has 31 days. Since Arjun works 6 days a week, we first calculate the total number of weeks and then the remaining days. March has approximately 4 weeks. 
+   - 4 weeks * 7 days/week = 28 days
+   - Remaining days = 31 - 28 = 3 days
+
+   Since Arjun works 6 days a week, in a 4-week month, he works:
+   - 4 weeks * 6 days/week = 24 days
+
+   For the remaining 3 days, since Arjun works 6 out of 7 days, and assuming the month starts on a day he works (to maximize his working days, as the exact start day of the week isn't specified), he would work all 3 remaining days if they fall on his working days. However, without knowing the exact start day, we'll assume he works the number of days that matches his 6-day workweek pattern. Given the information, we'll proceed with the assumption that he works his full 6 days each week, which gives us 24 working days in the full weeks. For simplicity, we'll calculate his earnings for the full weeks and then add any earnings from the additional days.
+
+2. Calculate earnings per week:
+   - Hours worked per day = 7 hours
+   - Days worked per week = 6 days
+   - Total hours worked per week = 7 hours/day * 6 days/week = 42 hours/week
+   - Earnings per hour = €16
+   - Weekly earnings from hours = 42 hours/week * €16/hour = €672/week
+   - Weekly bonus = €589
+   - Total weekly earnings = €672/week + €589/week = €1261/week
+
+3. Calculate total earnings for the month of March, assuming he works all his scheduled days and the company performs well:
+   - Full weeks in March = 4 weeks
+   - Earnings from full weeks = 4 weeks * €1261/week = €5044
+   - Remaining days = 3 days (as calculated earlier)
+   - Assuming he works these 3 days (since we're maximizing his pay and assuming the company's performance allows for the bonus, but we need to calculate if he actually works these days based on his schedule):
+     - Hours worked in remaining days = 3 days * 7 hours/day = 21 hours
+     - Earnings from remaining hours = 21 hours * €16/hour = €336
+     - Since the bonus is weekly and he's already received it for the full weeks, we don't add another full bonus for these 3 days.
+
+4. Total earnings in March:
+   - Earnings from full weeks = €5044
+   - Earnings from additional days = €336
+   - Total earnings = €5044 + €336 = €5380
+
+#### 5380
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S34  — correct weekly value but miscounted working days in the month, adding spurious extra days
+         evidence: "For the extra 3 days, he earns 3 * 6 * 23 = €414. Adding these together gives €5044 + €414 = €5380"
+  [passA] S34  — Reaches the gold value 5044 via the correct weekly plan, then miscounts March working days by adding 3 extra paid days
+         evidence: "Earnings from full weeks = 4 weeks * €1261/week = €5044 ... Total earnings = €5044 + €336 = €5380"
+  [passB] S2  — reaches the intended 4-week total (€5044) exactly, then inserts a spurious extra-days operation on top
+         evidence: "Earnings from additional days = €336
+   - Total earnings = €5044 + €336 = €5380"
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0219    [rand_out_135]    consensus: AMBIGUOUS    votes(pass1,A,B)=['S1', 'S1', 'S2']
+gold = 678.0    |    model emitted = 699
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+The vending machines sell crackers for 25 cents and pretzels for 100 cents. Arjun spent $700 and got 4 bags of crackers and had 3% of his money left in change. How many pretzels did he buy?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To solve this problem, let's break it down into steps.
+
+1. **Calculate the total amount spent on crackers:**
+   - Each bag of crackers costs 25 cents, or $0.25.
+   - Arjun bought 4 bags of crackers, so he spent 4 * $0.25 = $1 on crackers.
+
+2. **Calculate the total amount Arjun had in dollars:**
+   - Arjun spent $700 and had 3% of his money left.
+   - This means he spent 97% of his money.
+   - Let's denote the total amount of money Arjun had as \(X\).
+   - The amount spent is 97% of \(X\), which equals $700.
+   - So, \(0.97X = 700\).
+   - Solving for \(X\), we get \(X = \frac{700}{0.97}\).
+
+3. **Calculate \(X\):**
+   - \(X = \frac{700}{0.97} \approx 722.16\).
+
+4. **Determine the amount spent on pretzels:**
+   - Arjun spent a total of $700.
+   - He spent $1 on crackers.
+   - So, the amount spent on pretzels is $700 - $1 = $699.
+
+5. **Calculate the number of pretzels bought:**
+   - Each pretzel costs $1 (or 100 cents).
+   - The amount spent on pretzels is $699.
+   - So, the number of pretzels bought is \(\frac{699}{1} = 699\).
+
+#### 699
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S1  — reads $700 as amount spent on items rather than total money, ignoring the 3% change
+         evidence: "the amount spent on pretzels is $700 - $1 = $699"
+  [passA] S1  — Reads $700 as the amount spent rather than the money he had with 3% returned as change; computes consistently for that wrong reading
+         evidence: "So, the amount spent on pretzels is $700 - $1 = $699."
+  [passB] S2  — same structure as its twin: computes the 3%-left relation as an aside but drops the change subtraction from the plan, using the raw $700
+         evidence: "the amount spent on pretzels is $700 - $1 = $699"
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0234    [rand_out_135]    consensus: AMBIGUOUS    votes(pass1,A,B)=['S1', 'S34', 'S34']
+gold = 578.0    |    model emitted = 550
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+Ava went to the boardwalk for vacation. Her parents gave her $1200 to buy whatever she wanted. At the gift shop, saltwater taffy was on sale for "Buy 15 kilograms at $21 per kilogram, get 4 kilograms 2/3 off." She scooped up 21 kilograms. She also bought a mixed bag of starfish for $11.5 and 11 keychains that were $20.5 each. How much money does Ava have left?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To find out how much money Ava has left, we need to calculate the total cost of her purchases and subtract that from the initial $1200.
+
+1. **Calculating the cost of saltwater taffy:**
+   - Ava bought 21 kilograms of saltwater taffy.
+   - The offer is "Buy 15 kilograms at $21 per kilogram, get 4 kilograms 2/3 off."
+   - First, calculate the cost for the first 15 kilograms: 15 kg * $21/kg = $315.
+   - For the next 4 kilograms, she gets 2/3 off: 2/3 of $21 is $14, so the discount is $21 - $14 = $7 off per kilogram. Thus, the price per kilogram for these 4 kilograms is $21 - $7 = $14. So, 4 kg * $14/kg = $56.
+   - Ava bought 21 kilograms, so she has 2 kilograms left after the initial 15 and the discounted 4. These 2 kilograms are bought at the full price of $21 per kilogram: 2 kg * $21/kg = $42.
+   - The total cost for the saltwater taffy is $315 (first 15 kg) + $56 (next 4 kg with discount) + $42 (last 2 kg at full price) = $413.
+
+2. **Calculating the cost of the mixed bag of starfish and keychains:**
+   - The mixed bag of starfish costs $11.5.
+   - 11 keychains at $20.5 each will be 11 * $20.5 = $225.5.
+   - The total cost for the starfish and keychains is $11.5 + $225.5 = $237.
+
+3. **Total cost of all purchases:**
+   - Saltwater taffy: $413.
+   - Starfish and keychains: $237.
+   - Total cost = $413 + $237 = $650.
+
+4. **Calculating how much money Ava has left:**
+   - Initial amount = $1200.
+   - Total spent = $650.
+   - Amount left = $1200 - $650 = $550.
+
+#### 550
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S1  — misinterprets '2/3 off' as paying 2/3 (discount 1/3) instead of discount 2/3
+         evidence: "2/3 of $21 is $14, so the discount is $21 - $14 = $7 off per kilogram"
+  [passA] S34  — Plan is right (15 full + 4 discounted + 2 full kg) and it computes 2/3 of 21 = 14, but then swaps discount and remaining price when applying it
+         evidence: "2/3 of $21 is $14, so the discount is $21 - $14 = $7 off per kilogram. Thus, the price per kilogram for these 4 kilograms is $21 - $7 = $14"
+  [passB] S34  — states the 2/3-off discount and computes 2/3 of 21 = 14 correctly, then swaps discount and residual price when substituting (charges $14 instead of $7)
+         evidence: "she gets 2/3 off: 2/3 of $21 is $14, so the discount is $21 - $14 = $7 off per kilogram"
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0237    [rand_out_135]    consensus: AMBIGUOUS    votes(pass1,A,B)=['S34', 'S2', 'S1']
+gold = 6232.0    |    model emitted = 7072
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+Viktor works a 10-hour shift each day, 5 days a week. He earns €28 per hour and gets a €158 bonus each week if the company performs well. How much money did Viktor make in January if the company performed very well for the whole month?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To calculate how much money Viktor made in January, we first need to determine how many weeks are in January and then calculate his weekly earnings before multiplying by the number of weeks.
+
+1. **Calculate weekly earnings:**
+   - Viktor works 10 hours a day, 5 days a week, which means he works 10 * 5 = 50 hours a week.
+   - He earns €28 per hour, so his weekly earnings from hours worked are 50 * 28 = €1400.
+   - He also gets a €158 bonus each week if the company performs well, so his total weekly earnings when the company performs well are 1400 + 158 = €1558.
+
+2. **Determine the number of weeks in January:**
+   - January has 31 days. Since there are 7 days in a week, we divide 31 by 7 to find out how many full weeks are in January, which gives us approximately 4.43 weeks. However, since Viktor works 5 days a week, we should consider the actual working days in January. Given that January 1st is a Sunday, the working days (Monday to Friday) in January would be:
+     - Week 1: 5 days (3rd to 7th)
+     - Week 2: 5 days (10th to 14th)
+     - Week 3: 5 days (17th to 21st)
+     - Week 4: 5 days (24th to 28th)
+     - And since the 31st is a Tuesday, there's an additional 3 working days (31st, but considering the Monday and Tuesday, it makes 3 days from the 29th to 31st, assuming he works the first two days of the next week's cycle).
+   - However, for simplicity and because the question implies full weeks of work plus the bonus, we'll calculate his earnings for 4 full weeks and then add the earnings for the extra working days.
+
+3. **Calculate earnings for 4 full weeks:**
+   - 4 weeks * €1558 per week = €6232.
+
+4. **Calculate earnings for the extra working days:**
+   - There are 3 extra working days (29th, 30th, 31st).
+   - Viktor works 10 hours a day and earns €28 per hour, so for one day he earns 10 * 28 = €280.
+   - For 3 days, he earns 3 * 280 = €840.
+   - Since the company performed well, we should also consider if these extra days would qualify for a bonus. However, the bonus is given weekly, and these extra days are part of the next week's cycle, so we won't add an extra bonus for these days.
+
+5. **Total earnings for January:**
+   - Earnings for 4 full weeks: €6232.
+   - Earnings for the extra working days: €840.
+   - Total earnings = 6232 + 840 = €7072.
+
+#### 7072
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S34  — computed the correct 4-week total then miscounted the month by adding spurious extra working days
+         evidence: "Total earnings = 6232 + 840 = €7072"
+  [passA] S2  — Computes the intended 4-week answer 6232 correctly, then inserts a spurious extra term of 3 additional working days (propped up by a fabricated 'January 1st is a Sunday' calendar) on top of a correct reading of all quantities
+         evidence: "Total earnings = 6232 + 840 = €7072"
+  [passB] S1  — Fabricates an external calendar layout not in the problem, spawning 3 spurious extra working days on top of the correct 4-week total of 6232
+         evidence: "Given that January 1st is a Sunday, the working days (Monday to Friday) in January would be:"
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0243    [rand_out_135]    consensus: AMBIGUOUS    votes(pass1,A,B)=['S2', 'S34', 'S34']
+gold = 144.0    |    model emitted = 120
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+According to its nutritional info, a bag of breads has 375 calories per serving. If a 300 ounces bag has 5 servings, how many ounces can you eat if your daily calorie target is 2225 and you have already consumed 1325 calories?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To determine how many ounces you can eat, first, calculate the remaining calories you can consume for the day. 
+
+Your daily calorie target is 2225 calories, and you have already consumed 1325 calories. 
+
+Remaining calories = Daily calorie target - Consumed calories
+Remaining calories = 2225 - 1325
+Remaining calories = 900
+
+Next, calculate how many servings of bread you can eat with the remaining calories. 
+
+Each serving has 375 calories. 
+
+Servings = Remaining calories / Calories per serving
+Servings = 900 / 375
+Servings = 2.4
+
+Since you can't eat a fraction of a serving, you can eat 2 full servings. 
+
+Now, calculate the total ounces in one serving. 
+
+The 300 ounces bag has 5 servings. 
+
+Ounces per serving = Total ounces / Total servings
+Ounces per serving = 300 / 5
+Ounces per serving = 60
+
+Finally, calculate the ounces you can eat. 
+
+You can eat 2 servings. 
+
+Ounces = Servings * Ounces per serving
+Ounces = 2 * 60
+Ounces = 120
+
+#### 120
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S2  — inserts a spurious whole-serving floor (2.4->2) though ounces are continuous
+         evidence: "Since you can't eat a fraction of a serving, you can eat 2 full servings."
+  [passA] S34  — Correct plan (remaining calories / per-serving, then x ounces) but injects an unjustified floor of 2.4 to 2 servings; question asks ounces, so 2.4 x 60 = 144 was available.
+         evidence: "Since you can't eat a fraction of a serving, you can eat 2 full servings."
+  [passB] S34  — Correct operation sequence throughout; spuriously floors 2.4 servings to 2 before converting to ounces (2.4 x 60 = 144).
+         evidence: "Servings = 2.4
+
+Since you can't eat a fraction of a serving, you can eat 2 full servings."
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0245    [rand_out_135]    consensus: AMBIGUOUS    votes(pass1,A,B)=['S34', 'S34', 'S2']
+gold = 4652.0    |    model emitted = 5192
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+Sanjay works a 6-hour shift each day, 5 days a week. He earns ₣30 per hour and gets a ₣263 bonus each week if the company performs well. How much money did Sanjay make in December if the company performed very well for the whole month?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To calculate Sanjay's total earnings in December, we first need to determine how many weeks are in December and then calculate his earnings per week, including the bonus.
+
+1. **Determine the number of weeks in December:** December has 31 days. Assuming a week has 7 days, December can have 4 full weeks and 3 additional days. Since Sanjay works 5 days a week, the extra days beyond the full weeks will be worked as well because they fall within his 5-day workweek schedule.
+
+2. **Calculate earnings per week without bonus:** Sanjay works 6 hours a day, 5 days a week. So, he works 6 * 5 = 30 hours per week. At ₣30 per hour, his weekly earnings without the bonus are 30 hours * ₣30/hour = ₣900.
+
+3. **Add the weekly bonus:** Sanjay gets a ₣263 bonus each week if the company performs well. So, his total weekly earnings when the company performs well are ₣900 (from hours worked) + ₣263 (bonus) = ₣1163 per week.
+
+4. **Calculate earnings for the full weeks in December:** There are 4 full weeks in December. So, for these weeks, Sanjay earns 4 * ₣1163 = ₣4652.
+
+5. **Calculate earnings for the additional days:** Beyond the 4 full weeks, there are 3 additional days in December. Since Sanjay works 5 days a week, these 3 days are part of his work schedule. He works 6 hours a day, so for these 3 days, he works 3 * 6 = 18 hours. At ₣30 per hour, he earns 18 * ₣30 = ₣540 for these additional days.
+
+6. **Total earnings for December:** Adding the earnings from the full weeks and the additional days, Sanjay's total earnings for December are ₣4652 (from full weeks) + ₣540 (from additional days) = ₣5192.
+
+#### 5192
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S34  — correct weekly plan (4652) then miscounted month by adding extra days
+         evidence: "there are 3 additional days in December ... he works 3 * 6 = 18 hours ... he earns 18 * ₣30 = ₣540"
+  [passA] S34  — Reaches the gold value 4652 with correct weekly plan, then miscounts working days in the month by paying 3 extra days
+         evidence: "There are 4 full weeks in December. So, for these weeks, Sanjay earns 4 * £1163 = £4652. ... £4652 (from full weeks) + £540 (from additional days) = £5192"
+  [passB] S2  — computes the intended 4-week total (£4652) correctly, then inserts a spurious extra-days operation on top
+         evidence: "he works 3 * 6 = 18 hours. At ₣30 per hour, he earns 18 * ₣30 = ₣540 for these additional days."
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0257    [rand_out_135]    consensus: AMBIGUOUS    votes(pass1,A,B)=['S2', 'S2', 'S1']
+gold = 8.0    |    model emitted = 0
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+Quinn has a flower bed that is 189 meters long. Quinn wants to fill her flower bed with plants. Quinn's flowers grow 5 meters wide so she needs to leave 13.5 meters between every plant. Quinn already owns 13 flowers. Each flowering plant costs ₣8 at the store, how much money will Quinn spend at the store to fill up her flower bed?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To determine how much money Quinn will spend, we first need to calculate how many plants she can fit in her flower bed and then subtract the number of plants she already owns to find out how many more plants she needs to buy.
+
+1. Calculate the total space taken up by one plant: 
+   - Each plant grows 5 meters wide.
+   - Quinn needs to leave 13.5 meters between every plant.
+   - So, the total space for one plant and the gap after it is 5 + 13.5 = 18.5 meters.
+
+2. Calculate how many plants Quinn can fit in her 189-meter long flower bed:
+   - Since the last plant won't have a gap after it, we calculate the space as follows:
+   - For the first plant, it's 5 meters (plant width) + 13.5 meters (gap) = 18.5 meters.
+   - For each subsequent plant, we add 18.5 meters.
+   - However, to simplify, we can think of the first plant taking 5 meters and each additional plant taking 18.5 meters (including its preceding gap).
+   - So, for n plants, the equation to represent the total length would be: 5 + (n-1)*18.5 = 189.
+   - Solving for n:
+     - 5 + 18.5n - 18.5 = 189
+     - 18.5n = 189 + 18.5 - 5
+     - 18.5n = 202.5
+     - n = 202.5 / 18.5
+     - n = 10.94, which we round down to 10 since we can't have a fraction of a plant.
+
+3. Calculate how many plants Quinn needs to buy:
+   - Quinn already owns 13 flowers, but her bed can only fit 10 plants.
+   - Since she can't fit more than 10 and already has 13, she doesn't need to buy any more plants to fill her bed. In fact, she has more than enough.
+
+4. Calculate the cost:
+   - Since Quinn already has enough plants (more than she needs), she won't spend any money on buying new plants.
+
+#### 0
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S2  — builds plant-spacing structure including flower width, yielding 10 vs gold's 189/13.5=14
+         evidence: "the total space for one plant and the gap after it is 5 + 13.5 = 18.5 meters"
+  [passA] S2  — Inserts a spurious extra operation, adding plant width to spacing (18.5 m footprint) where the intended plan uses 189/13.5=14 plants, so it concludes 0 purchases; wording is ambiguous enough that this is a genuine tie with ARTIFACT.
+         evidence: "the total space for one plant and the gap after it is 5 + 13.5 = 18.5 meters."
+  [passB] S1  — Misreads the spatial layout: gold treats 13.5 m as the per-plant pitch (189/13.5=14 plants, buy 1), while the model adds width+gap and concludes only 10 fit; instance is ambiguous, so ARTIFACT was arguable.
+         evidence: "the total space for one plant and the gap after it is 5 + 13.5 = 18.5 meters."
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0260    [rand_out_135]    consensus: AMBIGUOUS    votes(pass1,A,B)=['S2', 'S1', 'S1']
+gold = 30.0    |    model emitted = 60
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+Jin was a pen pal with 6 people. He stopped being penpals with 1 of them. They each send 4 letters a week that are 10 pages long. He responds in kind. He can write a page every 9 minutes. How many hours does he spend writing a week?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To find out how many hours Jin spends writing a week, let's break down the problem step by step.
+
+1. Jin was a pen pal with 6 people but stopped being pen pals with 1 of them. So, he is now pen pals with 6 - 1 = 5 people.
+
+2. Each of these 5 people sends him 4 letters a week, and each letter is 10 pages long. This means he receives 5 * 4 * 10 = 200 pages a week.
+
+3. Since he responds in kind, he also sends out 200 pages a week.
+
+4. In total, he writes 200 (sent) + 200 (received) = 400 pages a week.
+
+5. He can write a page every 9 minutes. So, to write 400 pages, it takes him 400 * 9 minutes = 3600 minutes.
+
+6. To convert minutes into hours, we divide by 60 (since there are 60 minutes in an hour). So, 3600 / 60 = 60 hours.
+
+#### 60
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S2  — quantities read correctly but added received pages to written pages (spurious extra operation)
+         evidence: "he writes 200 (sent) + 200 (received) = 400 pages a week"
+  [passA] S1  — Same 'responds in kind' misreading — counts received pages as pages he writes, doubling to 400; downstream arithmetic is correct for the wrong reading
+         evidence: "he writes 200 (sent) + 200 (received) = 400 pages a week"
+  [passB] S1  — Misreads 'responds in kind' as writing double (received pages counted as written); downstream math correct for that reading
+         evidence: "In total, he writes 200 (sent) + 200 (received) = 400 pages a week."
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0261    [rand_out_135]    consensus: AMBIGUOUS    votes(pass1,A,B)=['S1', 'S1', 'ARTIFACT']
+gold = 1714.0    |    model emitted = None (ABSTAINED — no #### answer)
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+The vending machines sell pretzels for 50 cents and popcorn for 75 cents. Bodhi spent ¥1300 and got 3 bags of pretzels and had 1% of his money left in change. How many popcorn did he buy?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To solve this problem, let's break it down step by step.
+
+1. **Calculate the total amount spent on pretzels:**
+   - Each pretzel costs 50 cents, or $0.50.
+   - Bodhi bought 3 bags of pretzels, so he spent 3 * $0.50 = $1.50 on pretzels.
+
+2. **Convert the total amount Bodhi spent to dollars:**
+   - Bodhi spent ¥1300. However, the problem doesn't specify the exchange rate between yen and dollars. For the purpose of this calculation, we'll assume the exchange rate is approximately 1 USD = 100 JPY, which is a rough estimate and can vary. Thus, ¥1300 is approximately $13.00.
+
+3. **Calculate the amount of money Bodhi had left as change:**
+   - Bodhi had 1% of his money left.
+   - 1% of $13.00 is 0.01 * $13.00 = $0.13.
+
+4. **Determine the total amount Bodhi spent:**
+   - Since Bodhi had $0.13 left from $13.00, he spent $13.00 - $0.13 = $12.87.
+
+5. **Calculate the amount spent on popcorn:**
+   - We know Bodhi spent $1.50 on pretzels.
+   - So, the amount spent on popcorn is $12.87 (total spent) - $1.50 (spent on pretzels) = $11.37.
+
+6. **Calculate the number of popcorn bags bought:**
+   - Each popcorn costs 75 cents, or $0.75.
+   - The number of popcorn bags bought is $11.37 / $0.75 = 15.16.
+   - Since you cannot buy a fraction of a bag, and assuming Bodhi only bought whole bags, we round down to the nearest whole number because he couldn't have bought more than he paid for. However, given the context, it seems there might have been an oversight in the initial calculation regarding the conversion and rounding. Let's correct the approach considering the initial steps might have introduced inaccuracies due to rounding and conversion assumptions.
+
+Given the potential for confusion in the conversion and calculation process, let's reconsider the steps focusing on the essential mathematical relationships without introducing conversion errors:
+
+- Bodhi spent ¥1300 and had 1% left, meaning he spent 99% of ¥1300.
+- 99% of ¥1300 is 0.99 * ¥1300 = ¥1287 spent.
+- Since we're working with cents for the snacks, let's convert ¥1287 to dollars using the rough estimate of 1 USD = 100 JPY: ¥1287 ≈ $12.87.
+- Bodhi bought 3 pretzels for $0.50 each, totaling $1.50.
+- Subtracting the cost of pretzels from the total spent: $12.87 - $1.50 = $11.37 spent on popcorn.
+- Each popcorn costs $0.75, so dividing $11.37 by $0.75 gives the number of popcorn bags.
+
+However, the calculation $11.37 / $0.75 = 15.16 suggests an issue with rounding or the initial conversion, as the division should result in a whole number if the initial problem setup and conversions were perfectly accurate. The error likely stems from the conversion of yen to dollars and the subsequent calculations. 
+
+Given this, let's correct the understanding:
+- If Bodhi spent ¥1287 and this translates directly to his expenditure without needing the dollar conversion for the calculation of items (since the conversion might introduce inaccuracies), we focus on the items' cost in the currency they're given (which seems to be dollars for the item prices, introducing a need for clarity on the currency conversion).
+
+To directly address the calculation without conversion errors:
+- Bodhi spent $12.87 (as per the dollar equivalent of his spending, acknowledging the conversion might not be perfectly accurate).
+- He spent $1.50 on pretzels.
+- $12.87 - $1.50 = $11.37 on popcorn.
+- $11.37 / $0.75 per popcorn = 15.16, which, considering the context, should be rounded, but given the nature of the items, it suggests a calculation or conversion error affecting the precision.
+
+Given the constraints and aiming for clarity:
+- The calculation indicates an issue with either the conversion or the rounding in the steps. The direct calculation without considering the conversion factor (since the prices are in dollars) should directly apply to the amount spent in the respective currency. 
+
+Thus, focusing solely on the mathematical relationship without introducing conversion errors:
+- If Bodhi spent $11.37 on popcorn, and each costs $0.75, the calculation should reflect a whole number of items purchased. The calculation error or rounding issue suggests reconsidering the
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S1  — fabricates a yen-to-dollar conversion not in the problem, corrupting the whole calculation
+         evidence: "the problem doesn't specify the exchange rate between yen and dollars... we'll assume the exchange rate is approximately 1 USD = 100 JPY"
+  [passA] S1  — Fabricates an external currency conversion not in the problem, derailing all downstream work into a non-integer loop and abstention.
+         evidence: "we'll assume the exchange rate is approximately 1 USD = 100 JPY, which is a rough estimate"
+  [passB] ARTIFACT  — Prices in cents vs spending in yen make the instance unit-broken; gold 1714 is only reachable unit-blind, and the trace correctly notices the non-integer contradiction and loops without emitting.
+         evidence: "the division should result in a whole number if the initial problem setup and conversions were perfectly accurate. The error likely stems from the conversion of yen to dollars"
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0264    [rand_out_135]    consensus: AMBIGUOUS    votes(pass1,A,B)=['S34', 'S34', 'S2']
+gold = 4528.0    |    model emitted = 4942
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+Tariq works a 6-hour shift each day, 4 days a week. He earns ¥23 per hour and gets a ¥580 bonus each week if the company performs well. How much money did Tariq make in March if the company performed very well for the whole month?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To calculate Tariq's earnings for March, we first need to determine how many weeks are in March. Since March has 31 days, it has approximately 4 weeks.
+
+Tariq works 6 hours a day, 4 days a week, so he works a total of 6 * 4 = 24 hours per week.
+
+He earns ¥23 per hour, so his weekly earnings from hours worked are 24 * 23 = ¥552.
+
+He also gets a ¥580 bonus each week if the company performs well. Since the company performed well for the whole month, he gets this bonus every week.
+
+So, his total weekly earnings are 552 + 580 = ¥1132.
+
+Since there are approximately 4 weeks in March, his total earnings for March are 1132 * 4 = ¥4530 (using the 4-week approximation for simplicity, as the exact number of weeks in a month can vary but this gives a close enough estimate for the problem's requirements).
+
+However, to ensure accuracy in calculation considering the question might imply a need for precision in weeks, let's calculate with the understanding that March has 31 days and Tariq works 4 days a week. This means he works a total of (31/7)*4 = 17.714... days in March, but since we know he works 4 days a week, we can calculate his total hours worked in March more directly by multiplying his weekly hours by the number of weeks he worked and then adjusting for the extra days.
+
+Given that March has 31 days and Tariq works 4 days a week, he works 4 weeks and 3 days (since 28 days = 4 weeks, and the remaining 3 days). 
+
+His earnings for 4 full weeks are 1132 * 4 = ¥4528.
+
+For the extra 3 days, he earns 3 * 6 * 23 = ¥414.
+
+Adding these together gives ¥4528 + ¥414 = ¥4942.
+
+#### 4942
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S34  — correct weekly value but miscounted working days in the month, adding spurious extra days
+         evidence: "For the extra 3 days, he earns 3 * 6 * 23 = ¥414. Adding these together gives ¥4528 + ¥414 = ¥4942"
+  [passA] S34  — Reaches the gold value 4528 with the correct weekly plan, then miscounts March working days by paying 3 extra days
+         evidence: "His earnings for 4 full weeks are 1132 * 4 = ¥4528. For the extra 3 days, he earns 3 * 6 * 23 = ¥414."
+  [passB] S2  — computes the intended 4-week total (¥4528) exactly, then inserts a spurious extra-days operation
+         evidence: "For the extra 3 days, he earns 3 * 6 * 23 = ¥414.
+
+Adding these together gives ¥4528 + ¥414 = ¥4942."
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0268    [rand_out_135]    consensus: AMBIGUOUS    votes(pass1,A,B)=['S34', 'S34', 'S2']
+gold = 2520.0    |    model emitted = 2718
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+Ali works a 6-hour shift each day, 3 days a week. He earns ¥11 per hour and gets a ¥432 bonus each week if the company performs well. How much money did Ali make in July if the company performed very well for the whole month?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To calculate how much money Ali made in July, we first need to determine how many weeks are in July and then calculate his earnings per week, including the bonus.
+
+1. **Determine the number of weeks in July:** July has 31 days. Assuming a week has 7 days, July can have 4 full weeks and 3 extra days. Since Ali works 3 days a week, in a 4-week month, he would work 12 days (4 weeks * 3 days/week). For the extra 3 days, if they fall on his working days, he would work them as well, adding up to a maximum of 15 working days in July.
+
+2. **Calculate earnings per hour and per day:** Ali earns ¥11 per hour and works 6 hours a day. So, his daily earnings are ¥11/hour * 6 hours/day = ¥66/day.
+
+3. **Calculate weekly earnings without bonus:** Since Ali works 3 days a week, his weekly earnings without the bonus are ¥66/day * 3 days/week = ¥198/week.
+
+4. **Add the weekly bonus:** Ali gets a ¥432 bonus each week if the company performs well. So, his total weekly earnings when the company performs well are ¥198/week + ¥432/week = ¥630/week.
+
+5. **Calculate total earnings for July:** Assuming the extra 3 days in July fall on his working days (to maximize his earnings), Ali works a total of 15 days in July. His earnings for these 15 days, without considering the bonus, would be ¥66/day * 15 days = ¥990. However, to accurately account for the bonus, we should calculate his earnings on a weekly basis and then add any additional days. 
+
+- For 4 full weeks, he earns ¥630/week * 4 weeks = ¥2520.
+- For the extra 3 days, assuming they are working days, he earns ¥66/day * 3 days = ¥198.
+
+So, his total earnings for July, considering the company performed well, would be ¥2520 (from 4 weeks) + ¥198 (from the extra 3 days) = ¥2718.
+
+#### 2718
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S34  — correct weekly pay + 4 weeks, but miscounts working days by paying for 3 extra days in July
+         evidence: "For the extra 3 days, assuming they are working days, he earns ¥66/day * 3 days = ¥198."
+  [passA] S34  — Correct plan and correct 4-week total (2520) but miscounts working days in the month by adding 3 spurious extra days
+         evidence: "For the extra 3 days, assuming they are working days, he earns ¥66/day * 3 days = ¥198. So, his total earnings for July... would be ¥2520 (from 4 weeks) + ¥198"
+  [passB] S2  — computes the intended 4-week answer (2520) correctly, then inserts a spurious extra-3-days operation on an unstated assumption
+         evidence: "For 4 full weeks, he earns ¥630/week * 4 weeks = ¥2520.
+- For the extra 3 days, assuming they are working days, he earns ¥66/day * 3 days = ¥198."
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0272    [rand_out_135]    consensus: AMBIGUOUS    votes(pass1,A,B)=['S34', 'S34', 'S2']
+gold = 1560.0    |    model emitted = 1776
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+Noah works a 9-hour shift each day, 4 days a week. He earns ₣8 per hour and gets a ₣102 bonus each week if the company performs well. How much money did Noah make in May if the company performed very well for the whole month?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To calculate how much money Noah made in May, we first need to determine how many weeks are in May. Since May has 31 days, it can have 4 full weeks and an extra 3 days. 
+
+1. Calculate the total hours Noah works in a week: 
+9 hours/day * 4 days/week = 36 hours/week
+
+2. Calculate Noah's weekly earnings from hours worked:
+36 hours/week * ₣8/hour = ₣288/week
+
+3. Add the weekly bonus:
+₣288/week + ₣102/week = ₣390/week
+
+4. Calculate earnings for 4 full weeks in May:
+₣390/week * 4 weeks = ₣1560
+
+5. Calculate earnings for the extra 3 days in May:
+9 hours/day * ₣8/hour = ₣72/day
+₣72/day * 3 days = ₣216
+
+6. Add the earnings from the full weeks and the extra days:
+₣1560 + ₣216 = ₣1776
+
+Since the company performed well for the whole month, Noah also gets a bonus for the extra 3 days, which is a part of a week. However, the problem states he gets a ₣102 bonus each week if the company performs well, and there's no indication that this bonus is pro-rated for partial weeks. Therefore, we only consider the bonus for the 4 full weeks.
+
+#### 1776
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S34  — correct weekly setup but miscounts working days by adding spurious 3 extra days beyond 4 weeks
+         evidence: "Calculate earnings for the extra 3 days in May:
+9 hours/day * ₣8/hour = ₣72/day
+₣72/day * 3 days = ₣216 ... ₣1560 + ₣216 = ₣1776"
+  [passA] S34  — Correct plan and correct 4-week total (1560, the gold) but miscounts working days in the month by adding 3 spurious extra days
+         evidence: "₣72/day * 3 days = ₣216... ₣1560 + ₣216 = ₣1776"
+  [passB] S2  — computes the intended 4-week answer (1560) correctly, then inserts a spurious extra-3-days earnings operation
+         evidence: "₣1560 + ₣216 = ₣1776"
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0276    [rand_out_135]    consensus: AMBIGUOUS    votes(pass1,A,B)=['S2', 'S34', 'S2']
+gold = 3052.0    |    model emitted = 3268
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+Bodhi works a 8-hour shift each day, 5 days a week. He earns ₣9 per hour and gets a ₣403 bonus each week if the company performs well. How much money did Bodhi make in July if the company performed very well for the whole month?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To calculate how much money Bodhi made in July, we first need to determine how many weeks are in July and then calculate his earnings per week, including the bonus.
+
+1. **Number of weeks in July**: July has 31 days. Assuming a week has 7 days, July can have a maximum of 4 full weeks and 3 additional days. Since Bodhi works 5 days a week, those 3 extra days will be worked as part of his regular schedule.
+
+2. **Calculate earnings per week**:
+   - Bodhi works 8 hours a day, 5 days a week, which equals 8 * 5 = 40 hours per week.
+   - He earns ₣9 per hour, so his weekly earnings from hours worked are 40 * 9 = ₣360.
+   - He also gets a ₣403 bonus each week if the company performs well.
+
+3. **Total weekly earnings**: ₣360 (from hours worked) + ₣403 (bonus) = ₣763 per week.
+
+4. **Calculate earnings for the full weeks in July**: Since there are 4 full weeks in July, his earnings for these weeks are 4 * ₣763 = ₣3052.
+
+5. **Calculate earnings for the additional days**:
+   - The remaining 3 days in July are worked at 8 hours per day, which is 3 * 8 = 24 hours.
+   - At ₣9 per hour, his earnings for these hours are 24 * 9 = ₣216.
+
+6. **Total earnings for July**: ₣3052 (from full weeks) + ₣216 (from additional days) = ₣3268.
+
+#### 3268
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S2  — inserts spurious extra-days operation on top of the intended 4-week computation
+         evidence: "Total earnings for July: 3052 (from full weeks) + 216 (from additional days) = 3268."
+  [passA] S34  — correct weekly plan (4 x 763 = 3052) but miscounts working days by adding 3 spurious extra days
+         evidence: "The remaining 3 days in July are worked at 8 hours per day, which is 3 * 8 = 24 hours."
+  [passB] S2  — computes 4-week earnings correctly (3052) then inserts a spurious extra-days term beyond the weekly-pay structure
+         evidence: "The remaining 3 days in July are worked at 8 hours per day, which is 3 * 8 = 24 hours."
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+

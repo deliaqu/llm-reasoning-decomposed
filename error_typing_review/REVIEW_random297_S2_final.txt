@@ -1,0 +1,203 @@
+REVIEW — random-297 cases labeled S2 = OPERATION-PLANNING (final adjudicated)
+6 cases. These are the random-ablation failures that survived as planning-stage after the refined
+rule + hand-adjudication. Claim (dissociation): random ablation should rarely cause Stage-2. Scrutinize each:
+genuine wrong-operation-with-intact-comprehension, or actually execution (S34) / misread (S1)?
+
+====================================================================================================
+CASE c0146   [rand_out_297]   FINAL LABEL: S2   (prior 3-vote consensus: ['S2', 'S2', 'S2'])
+gold = 5000.0    |    model emitted = 2728
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+A new bacteria infects 8 people. Every day, each infected person infects 4 others. How many people are infected after 4 days?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To solve this problem, let's break it down step by step.
+
+Day 0: The bacteria infects 8 people initially.
+
+Day 1: Each of these 8 people infects 4 others, so the number of new infections is 8 * 4 = 32. The total number of infected people is now 8 (initially infected) + 32 (newly infected) = 40.
+
+Day 2: Each of the 32 people infected on Day 1 (since the initial 8 are already counted in the total and we're considering the spread from the new cases) infects 4 others, resulting in 32 * 4 = 128 new infections. Adding these to the previous total (including the original 8), we get 40 (previously infected) + 128 (newly infected) = 168.
+
+Day 3: Each of the 128 people infected on Day 2 infects 4 others, leading to 128 * 4 = 512 new infections. Adding these to the previous total, we have 168 (previously infected) + 512 (newly infected) = 680.
+
+Day 4: Each of the 512 people infected on Day 3 infects 4 others, resulting in 512 * 4 = 2048 new infections. Adding these to the previous total, we get 680 (previously infected) + 2048 (newly infected) = 2728.
+
+#### 2728
+
+----------------------------------------------------------------------------------------------------
+LABELER RATIONALE (S2): Quantities read correctly, but the model built a wrong growth structure: only the newest cohort reproduces, instead of every infected person infecting 4 (total x5/day -> 5000). A genuinely wrong operation structure, not a misread. Planning failure.
+   evidence: "Each of the 32 people infected on Day 1 (since the initial 8 are already counted in the total and we're considering the spread from the new cases) infects 4 others"
+
+>>> YOUR JUDGMENT  (S1 comprehension | S2 planning | S34 execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0163   [rand_out_297]   FINAL LABEL: S2   (prior 3-vote consensus: ['S2', 'ARTIFACT', 'S2'])
+gold = 8.0    |    model emitted = 0
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+Quinn has a flower bed that is 189 meters long. Quinn wants to fill her flower bed with plants. Quinn's flowers grow 5 meters wide so she needs to leave 13.5 meters between every plant. Quinn already owns 13 flowers. Each flowering plant costs ₣8 at the store, how much money will Quinn spend at the store to fill up her flower bed?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To determine how much money Quinn will spend, we first need to figure out how many plants she can fit in her flower bed and then subtract the number of plants she already owns to find out how many more she needs to buy.
+
+1. **Calculate the space each plant occupies:** Each plant grows 5 meters wide and needs an additional 13.5 meters of space between it and the next plant. So, the total space each plant occupies is 5 + 13.5 = 18.5 meters.
+
+2. **Calculate how many plants can fit in the flower bed:** The flower bed is 189 meters long. To find out how many plants can fit, we divide the total length by the space each plant occupies: 189 / 18.5 = 10.216. Since we can't have a fraction of a plant, Quinn can fit 10 plants in her flower bed.
+
+3. **Determine how many plants Quinn needs to buy:** Quinn already owns 13 flowers, but she can only fit 10 in her flower bed. This means she doesn't need to buy any more plants; in fact, she has more than she needs. However, the question asks how much money she will spend to fill up her flower bed, implying we should calculate based on the capacity of the bed, not her current stock.
+
+4. **Calculate the cost of filling the flower bed:** Since Quinn can fit 10 plants and she already has 13, which is more than enough, the question's premise is slightly misunderstood. Given the information, Quinn doesn't need to buy any plants because she already has enough to fill her bed more than once. However, to follow the instructions and calculate the cost to fill the bed (assuming she had no plants), the cost for 10 plants would be 10 * ₣8 = ₣80. But since she already has more than enough plants, she won't spend any money to fill her bed.
+
+Given the scenario and the instruction to follow the format to the letter, the correct interpretation under the constraints provided (and correcting for the logical flow based on the question's apparent intent) is that Quinn won't spend money because she has enough plants. However, the calculation directly answering the question as it seems to be intended (without considering she already has enough) would be misinterpreted. The question seems to aim at calculating the cost to fill the bed without considering she has more plants than needed. 
+
+#### 0
+
+----------------------------------------------------------------------------------------------------
+LABELER RATIONALE (S2): All values read correctly. Model chose footprint = width + gap = 18.5 giving 189/18.5 = 10 plants, versus the intended 189/13.5 = 14; with 13.5 it would buy 1 for $8. The divergence is which capacity operation to form, not a misread. (Gold's spacing logic is itself questionable, hence low confidence.)
+   evidence: "the total space each plant occupies is 5 + 13.5 = 18.5 meters"
+
+>>> YOUR JUDGMENT  (S1 comprehension | S2 planning | S34 execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0170   [rand_out_297]   FINAL LABEL: S2   (prior 3-vote consensus: ['S2', 'S2', 'S2'])
+gold = 30.0    |    model emitted = 21
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+Fatima can peel 10 clams a minute and saute 30 clams in 7 minutes. How long will it take her to peel and saute 90 clams?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To solve this problem, let's break it down into steps.
+
+1. **Peeling the Clams**: Fatima can peel 10 clams a minute. To peel 90 clams, it would take her 90 / 10 = 9 minutes.
+
+2. **Sauteing the Clams**: Fatima can saute 30 clams in 7 minutes. To find out how many minutes it takes her to saute 1 clam, we divide 7 minutes by 30 clams, which gives us 7 / 30 = 0.2333 minutes per clam. For 90 clams, it would take her 90 * 0.2333 = 21 minutes.
+
+However, these tasks are typically done sequentially in a real-world scenario (you peel the clams before you saute them), but the question seems to ask for the total time to complete both tasks without specifying if they can be done simultaneously for the same set of clams or if we're considering the time to process the entire batch of 90 clams from start to finish. Given the nature of the tasks, peeling and sauteing are sequential steps for each clam, but for different clams, these steps can overlap. 
+
+For the first 9 minutes, Fatima can peel clams, and once she has enough peeled, she can start sauteing them while continuing to peel the rest. The limiting factor here is the sauteing, as it takes longer to saute 90 clams than to peel them. 
+
+Since peeling and sauteing can somewhat overlap (once the first batch of clams is peeled, they can be sauteed while the next batch is being peeled), the total time isn't simply the sum of the times for peeling and sauteing. However, given the information provided, we calculate the time for each task separately and then consider how they might overlap.
+
+Given that the sauteing process is the longer of the two (21 minutes for sauteing vs. 9 minutes for peeling), and considering that some peeling can be done while sauteing is happening (after the initial peeling), the minimum time required would be the time it takes to saute the clams plus any additional peeling time that couldn't overlap with sauteing. However, since peeling is faster, the critical path here is sauteing, and peeling can be completed within the time frame of sauteing.
+
+Thus, considering the overlap and focusing on the critical path (sauteing), the total time to peel and saute 90 clams, taking into account that peeling can be done concurrently with sauteing after the initial batch is ready, would essentially be the time it takes to saute them, as peeling can be completed during this time.
+
+#### 21
+
+----------------------------------------------------------------------------------------------------
+LABELER RATIONALE (S2): Both operands computed: peel=9min, saute=21min; sequential total = 9+21 = 30. The model has both pieces but botches the final combination, invoking an unstated parallelism/overlap to take max (21) and drop the peel term. Dropped an already-computed term from the aggregation -> S34.
+   evidence: "considering the overlap and focusing on the critical path (sauteing), the total time to peel and saute 90 clams... would essentially be the time it takes to saute them"
+
+>>> YOUR JUDGMENT  (S1 comprehension | S2 planning | S34 execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0184   [rand_out_297]   FINAL LABEL: S2   (prior 3-vote consensus: ['S2', 'S2', 'S2'])
+gold = 30.0    |    model emitted = 22
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+Beatriz can peel 10 clams a minute and saute 40 clams in 11 minutes. How long will it take her to peel and saute 80 clams?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To solve this problem, let's break it down into steps.
+
+1. **Peeling the Clams**: Beatriz can peel 10 clams a minute. To peel 80 clams, it would take her 80 / 10 = 8 minutes.
+
+2. **Sauteing the Clams**: Beatriz can saute 40 clams in 11 minutes. To find out how long it takes her to saute 80 clams, we first determine her rate of sauteing per minute. Since she sautes 40 clams in 11 minutes, her rate is 40 / 11 clams per minute. For 80 clams, it would take her 80 / (40 / 11) = 80 * (11 / 40) = 22 minutes.
+
+3. **Combining the Tasks**: Since peeling and sauteing are sequential tasks (you can't saute before peeling), we need to add the time it takes to peel the clams to the time it takes to saute them. However, the question implies that these tasks are done one after the other but doesn't explicitly state that she can't start sauteing some clams while still peeling others. For the purpose of this calculation and to follow the instructions precisely without making assumptions beyond the given information, we'll consider the total time for each task separately and then consider how they might overlap or be sequential.
+
+Given the information and the format required for the answer, the critical insight is recognizing that while peeling is a straightforward calculation, sauteing's calculation directly gives us the time for 80 clams based on the rate provided. The peeling time is 8 minutes, and the sauteing time for 80 clams, based on the rate, is calculated directly from the given data.
+
+However, considering the nature of the tasks and the typical interpretation of such problems, if we were to assume that peeling and sauteing can happen in a pipeline fashion (peeling some clams while sauteing others), the limiting factor would be the longer task, which in this straightforward calculation is sauteing. But since the problem doesn't explicitly allow for simultaneous tasks or provide a clear indication that we should consider overlap, we calculate each step separately and then consider the total process time based on the given data and the format required for the answer.
+
+#### 22
+
+----------------------------------------------------------------------------------------------------
+LABELER RATIONALE (S2): Both operands computed (peel=8, saute=22) and the addition operation was explicitly stated, then the peel term (8) was dropped from the final answer. Dropped already-computed term.
+   evidence: "we need to add the time it takes to peel the clams to the time it takes to saute them ... #### 22"
+
+>>> YOUR JUDGMENT  (S1 comprehension | S2 planning | S34 execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0186   [rand_out_297]   FINAL LABEL: S2   (prior 3-vote consensus: ['S2', 'S2', 'S2'])
+gold = 44.0    |    model emitted = 29
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+Nia can peel 4 clams a minute and saute 20 clams in 6 minutes. How long will it take her to peel and saute 80 clams?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To solve this problem, we need to break it down into steps.
+
+1. **Peeling the Clams**: Nia can peel 4 clams a minute. To peel 80 clams, it would take her 80 / 4 = 20 minutes.
+
+2. **Sauteing the Clams**: Nia can saute 20 clams in 6 minutes. To find out how many minutes it takes her to saute 1 clam, we divide 6 minutes by 20 clams, which gives us 6 / 20 = 0.3 minutes per clam. For 80 clams, it would take her 80 * 0.3 = 24 minutes.
+
+However, these tasks are typically done sequentially in batches rather than simultaneously for all clams due to the nature of the tasks. So, we should consider the time it takes to complete each task separately and then sum them up for the total time, but considering the most efficient way to do this (peeling and then sauteing in batches that match her sauteing capacity).
+
+- **Peeling Time**: 20 minutes to peel all 80 clams.
+- **Sauteing Time**: Since she can saute 20 clams in 6 minutes, for 80 clams, she would need to do this 4 times (80 / 20 = 4), which would take 4 * 6 = 24 minutes.
+
+But, the peeling and sauteing can be done in a pipeline fashion: as she finishes peeling a batch of clams, she can start sauteing them. The most efficient way would be to peel and saute in batches of 20, since that's the amount she can saute at one time.
+
+- **Time to Peel 20 Clams**: 20 / 4 = 5 minutes.
+- **Time to Saute 20 Clams**: 6 minutes.
+
+So, for each batch of 20 clams, it takes her 5 minutes to peel and then 6 minutes to saute, totaling 11 minutes per batch. However, since peeling and sauteing can overlap for subsequent batches (she can start peeling the next batch while sauteing the current one), the total time isn't simply 11 minutes * 4 batches.
+
+For the first batch, it takes 5 minutes to peel + 6 minutes to saute = 11 minutes.
+For each subsequent batch, she can peel the next batch while sauteing the current one, so it adds 5 minutes for each additional batch after the first (since the 6 minutes of sauteing overlaps with the 5 minutes of peeling for the next batch).
+
+So, after the first batch (11 minutes), she has 3 more batches to go. Each of these batches adds 6 minutes (the time it takes to saute, as the peeling time overlaps), because she can peel the next batch of clams while she's sauteing the previous batch.
+
+- **Total Time**: 11 minutes (for the first batch) + 3 * 6 minutes (for the subsequent batches) = 11 + 18 = 29 minutes.
+
+#### 29
+
+----------------------------------------------------------------------------------------------------
+LABELER RATIONALE (S2): Model computed peel=20 min and saute=24 min (the needed operands) but never committed to the simple sum 20+24=44; instead it constructed a wrong pipelining/overlap structure yielding 29. Genuinely wrong operation structure, not a downstream misread.
+   evidence: "the total time isn't simply 11 minutes * 4 batches... Total Time: 11 minutes (for the first batch) + 3 * 6 minutes (for the subsequent batches) = 11 + 18 = 29 minutes."
+
+>>> YOUR JUDGMENT  (S1 comprehension | S2 planning | S34 execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0189   [rand_out_297]   FINAL LABEL: S2   (prior 3-vote consensus: ['S2', 'S2', 'S2'])
+gold = 164.0    |    model emitted = 144
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+Yara can peel 9 carrots a minute and saute 20 carrots in 16 minutes. How long will it take her to peel and saute 180 carrots?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To solve this problem, we need to break it down into steps.
+
+First, let's calculate how long it takes Yara to peel 180 carrots:
+Yara can peel 9 carrots a minute. To find out how long it takes her to peel 180 carrots, we divide the total number of carrots by the number she can peel per minute: 180 / 9 = 20 minutes.
+
+Next, let's calculate how long it takes Yara to saute 180 carrots:
+Yara can saute 20 carrots in 16 minutes. To find out how long it takes her to saute 180 carrots, we first need to find out how many sets of 20 carrots she has: 180 / 20 = 9 sets. Since it takes her 16 minutes to saute one set, it will take her 9 * 16 minutes to saute all 9 sets: 9 * 16 = 144 minutes.
+
+Now, we need to consider that peeling and sauteing are sequential tasks. Yara cannot saute the carrots until they are peeled, but she can peel the next set of carrots while sauteing the previous set. However, given the significant difference in the time it takes to peel versus saute, the peeling time becomes negligible in comparison to the sauteing time for the overall process. Essentially, the limiting factor here is the sauteing time because it's much longer than the peeling time.
+
+However, to accurately account for both processes, we should recognize that while the carrots are being sautéed, more carrots can be peeled. But since peeling is so much faster, the time it takes to peel all the carrots (20 minutes) is less than the time it takes to sauté them (144 minutes). Thus, the total time is essentially the time it takes to sauté all the carrots because by the time the first batch is done being sautéed, the next batch can be ready to go, having been peeled during the sautéing of the first batch.
+
+Therefore, the total time it will take Yara to peel and saute 180 carrots is primarily determined by the sauteing time, as the peeling can be completed within the timeframe of sauteing the carrots.
+
+#### 144
+
+----------------------------------------------------------------------------------------------------
+LABELER RATIONALE (S2): Both operands computed (peel=20 min, saute=144 min) and sequential addition noted, then the already-computed 20 is dropped from the final combination via a bogus overlap argument. Term dropped in aggregation.
+   evidence: "the total time is essentially the time it takes to sauté all the carrots because ... the next batch can be ready to go, having been peeled during the sautéing"
+
+>>> YOUR JUDGMENT  (S1 comprehension | S2 planning | S34 execution | ARTIFACT):  ______
+>>> NOTES:
+

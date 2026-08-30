@@ -1,0 +1,346 @@
+REVIEW FILE 2 — random-297 cases the consensus attributed to STAGE-2 (planning)
+8 cases. These are the random-ablation failures all 3 labelers called S2.
+The claim is that random ablation should NOT produce Stage-2 (planning) failures, so these are the
+counter-examples worth your scrutiny: is each really a planning failure with intact comprehension,
+or is it actually execution (S34) / a misread (S1)?
+Fill in '>>> YOUR JUDGMENT' for each.
+
+====================================================================================================
+CASE c0138    [rand_out_297]    consensus: S2    votes(pass1,A,B)=['S2', 'S2', 'S2']
+gold = 323.0    |    model emitted = 369
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+Nadia went to the pier for vacation. Her parents gave her ¥1200 to buy whatever she wanted. At the beach shop, rock candy was on sale for "Buy 17 pounds at ¥23 per pound, get 4 pounds 1/2 off." She scooped up 23 pounds. She also bought a mixed bag of sea glass for ¥11.5 and 18 stickers that were ¥21.25 each. How much money does Nadia have left?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To find out how much money Nadia has left, let's calculate her expenses step by step.
+
+1. **Rock Candy Purchase:**
+   - The offer is "Buy 17 pounds at ¥23 per pound, get 4 pounds 1/2 off."
+   - First, calculate the cost of the first 17 pounds: 17 pounds * ¥23/pound = ¥391.
+   - For the next 4 pounds (since she bought 23 pounds in total), she gets 1/2 off. So, the price per pound for these 4 pounds is ¥23 * 1/2 = ¥11.5. 
+   - The cost for these 4 pounds is 4 pounds * ¥11.5/pound = ¥46.
+   - The total cost for 23 pounds of rock candy is ¥391 (for the first 17 pounds) + ¥46 (for the next 4 pounds with the discount) = ¥437.
+
+2. **Mixed Bag of Sea Glass:**
+   - The cost is ¥11.5.
+
+3. **Stickers:**
+   - 18 stickers at ¥21.25 each will be 18 * ¥21.25 = ¥382.5.
+
+4. **Total Expenses:**
+   - Rock candy: ¥437
+   - Sea glass: ¥11.5
+   - Stickers: ¥382.5
+   - Total = ¥437 + ¥11.5 + ¥382.5 = ¥831.
+
+5. **Initial Amount:**
+   - Nadia started with ¥1200.
+
+6. **Amount Left:**
+   - Subtract the total expenses from the initial amount: ¥1200 - ¥831 = ¥369.
+
+#### 369
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S2  — drops the 2 remaining full-price pounds (17+4 only covers 21 of 23), a structural omission
+         evidence: "For the next 4 pounds (since she bought 23 pounds in total), she gets 1/2 off... The total cost for 23 pounds of rock candy is ¥391 + ¥46 = ¥437"
+  [passA] S2  — Reads all quantities correctly but drops the required term for the remaining 2 pounds at full price (17+4=21, not 23); arithmetic it does is fine.
+         evidence: "The total cost for 23 pounds of rock candy is ¥391 (for the first 17 pounds) + ¥46 (for the next 4 pounds with the discount) = ¥437."
+  [passB] S2  — Reads the deal and the 23-pound total correctly but drops the required term for the 2 remaining full-price pounds (17+4=21, not 23); arithmetic it does perform is correct.
+         evidence: "For the next 4 pounds (since she bought 23 pounds in total), she gets 1/2 off."
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0146    [rand_out_297]    consensus: S2    votes(pass1,A,B)=['S2', 'S2', 'S2']
+gold = 5000.0    |    model emitted = 2728
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+A new bacteria infects 8 people. Every day, each infected person infects 4 others. How many people are infected after 4 days?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To solve this problem, let's break it down step by step.
+
+Day 0: The bacteria infects 8 people initially.
+
+Day 1: Each of these 8 people infects 4 others, so the number of new infections is 8 * 4 = 32. The total number of infected people is now 8 (initially infected) + 32 (newly infected) = 40.
+
+Day 2: Each of the 32 people infected on Day 1 (since the initial 8 are already counted in the total and we're considering the spread from the new cases) infects 4 others, resulting in 32 * 4 = 128 new infections. Adding these to the previous total (including the original 8), we get 40 (previously infected) + 128 (newly infected) = 168.
+
+Day 3: Each of the 128 people infected on Day 2 infects 4 others, leading to 128 * 4 = 512 new infections. Adding these to the previous total, we have 168 (previously infected) + 512 (newly infected) = 680.
+
+Day 4: Each of the 512 people infected on Day 3 infects 4 others, resulting in 512 * 4 = 2048 new infections. Adding these to the previous total, we get 680 (previously infected) + 2048 (newly infected) = 2728.
+
+#### 2728
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S2  — reads quantities right but drops the compounding contribution of all previously-infected people (should be *5/day)
+         evidence: "Each of the 32 people infected on Day 1 (since the initial 8 are already counted in the total and we're considering the spread from the new cases) infects 4 others"
+  [passA] S2  — givens read correctly but the recurrence is mis-assembled: only new cases spread instead of every infected person, dropping required multiplications
+         evidence: "Each of the 32 people infected on Day 1 (since the initial 8 are already counted in the total and we're considering the spread from the new cases) infects 4 others"
+  [passB] S2  — applies the rule correctly on Day 1 (all infected infect), then builds the wrong recurrence by dropping previously-infected people's infections; could be read as misreading 'each infected person'
+         evidence: "Each of the 32 people infected on Day 1 (since the initial 8 are already counted in the total and we're considering the spread from the new cases) infects 4 others"
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0164    [rand_out_297]    consensus: S2    votes(pass1,A,B)=['S2', 'S2', 'S2']
+gold = 40.0    |    model emitted = 32
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+A class of 121 students has various hobbies. 69 like to play video games, 4 like to play volleyball, and the rest like to either read or paint. How many like to read if the number that like to paint is twice the number that prefer playing volleyball?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To find out how many students like to read, let's break down the information given:
+
+1. Total students: 121
+2. Students who like to play video games: 69
+3. Students who like to play volleyball: 4
+4. The rest of the students like to either read or paint.
+5. The number of students who like to paint is twice the number of students who prefer playing volleyball.
+
+First, calculate the number of students who like to paint:
+- Since 4 students like volleyball, twice that number like to paint: 2 * 4 = 8 students like to paint.
+
+Now, calculate the total number of students who have specified hobbies (video games, volleyball, paint):
+- Video games: 69
+- Volleyball: 4
+- Paint: 8
+- Total with specified hobbies: 69 + 4 + 8 = 81 students
+
+To find out how many students like to read, subtract the total number of students with specified hobbies from the total number of students:
+- Total students: 121
+- Students with specified hobbies: 81
+- Students who like to read (or have other hobbies not specified, but since it's either read or paint and paint is accounted for, it's read): 121 - 81 = 40
+
+However, we need to account for the fact that the "rest" like to either read or paint, and we've already determined the number who like to paint (8). So, the number who like to read is the remainder after accounting for those who paint:
+- Total remaining after removing specified hobbies (not including read or paint): 40
+- Students who like to paint: 8
+- Therefore, students who like to read: 40 - 8 = 32
+
+#### 32
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S2  — correctly gets 40 then inserts spurious duplicate subtraction of paint
+         evidence: "Therefore, students who like to read: 40 - 8 = 32"
+  [passA] S2  — Wrong-structure: reaches correct 40 (121-81 already excluded paint) then inserts a spurious second subtraction of 8
+         evidence: "Total remaining after removing specified hobbies (not including read or paint): 40
+- Students who like to paint: 8
+- Therefore, students who like to read: 32"
+  [passB] S2  — comprehension intact and arithmetic correct, but it inserts a spurious second subtraction of the 8 painters after already removing them, corrupting a correct plan that had reached 40
+         evidence: "Total remaining after removing specified hobbies (not including read or paint): 40
+- Students who like to paint: 8
+- Therefore, students who like to read: 40 - 8 = 32"
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0170    [rand_out_297]    consensus: S2    votes(pass1,A,B)=['S2', 'S2', 'S2']
+gold = 30.0    |    model emitted = 21
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+Fatima can peel 10 clams a minute and saute 30 clams in 7 minutes. How long will it take her to peel and saute 90 clams?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To solve this problem, let's break it down into steps.
+
+1. **Peeling the Clams**: Fatima can peel 10 clams a minute. To peel 90 clams, it would take her 90 / 10 = 9 minutes.
+
+2. **Sauteing the Clams**: Fatima can saute 30 clams in 7 minutes. To find out how many minutes it takes her to saute 1 clam, we divide 7 minutes by 30 clams, which gives us 7 / 30 = 0.2333 minutes per clam. For 90 clams, it would take her 90 * 0.2333 = 21 minutes.
+
+However, these tasks are typically done sequentially in a real-world scenario (you peel the clams before you saute them), but the question seems to ask for the total time to complete both tasks without specifying if they can be done simultaneously for the same set of clams or if we're considering the time to process the entire batch of 90 clams from start to finish. Given the nature of the tasks, peeling and sauteing are sequential steps for each clam, but for different clams, these steps can overlap. 
+
+For the first 9 minutes, Fatima can peel clams, and once she has enough peeled, she can start sauteing them while continuing to peel the rest. The limiting factor here is the sauteing, as it takes longer to saute 90 clams than to peel them. 
+
+Since peeling and sauteing can somewhat overlap (once the first batch of clams is peeled, they can be sauteed while the next batch is being peeled), the total time isn't simply the sum of the times for peeling and sauteing. However, given the information provided, we calculate the time for each task separately and then consider how they might overlap.
+
+Given that the sauteing process is the longer of the two (21 minutes for sauteing vs. 9 minutes for peeling), and considering that some peeling can be done while sauteing is happening (after the initial peeling), the minimum time required would be the time it takes to saute the clams plus any additional peeling time that couldn't overlap with sauteing. However, since peeling is faster, the critical path here is sauteing, and peeling can be completed within the time frame of sauteing.
+
+Thus, considering the overlap and focusing on the critical path (sauteing), the total time to peel and saute 90 clams, taking into account that peeling can be done concurrently with sauteing after the initial batch is ready, would essentially be the time it takes to saute them, as peeling can be completed during this time.
+
+#### 21
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S2  — computes both times correctly then drops the peel time via a spurious parallelism assumption
+         evidence: "the total time to peel and saute 90 clams... would essentially be the time it takes to saute them, as peeling can be completed during this time. #### 21"
+  [passA] S2  — Both sub-times computed correctly (9 and 21); it then drops the required addition by inventing an overlap argument, emitting max instead of sum.
+         evidence: "would essentially be the time it takes to saute them, as peeling can be completed during this time."
+  [passB] S2  — Comprehension and both component computations (9 min peel, 21 min saute) are correct; the required addition is dropped via an unwarranted overlap assumption — wrong operation structure.
+         evidence: "the total time to peel and saute 90 clams, taking into account that peeling can be done concurrently with sauteing after the initial batch is ready, would essentially be the time it takes to saute them"
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0184    [rand_out_297]    consensus: S2    votes(pass1,A,B)=['S2', 'S2', 'S2']
+gold = 30.0    |    model emitted = 22
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+Beatriz can peel 10 clams a minute and saute 40 clams in 11 minutes. How long will it take her to peel and saute 80 clams?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To solve this problem, let's break it down into steps.
+
+1. **Peeling the Clams**: Beatriz can peel 10 clams a minute. To peel 80 clams, it would take her 80 / 10 = 8 minutes.
+
+2. **Sauteing the Clams**: Beatriz can saute 40 clams in 11 minutes. To find out how long it takes her to saute 80 clams, we first determine her rate of sauteing per minute. Since she sautes 40 clams in 11 minutes, her rate is 40 / 11 clams per minute. For 80 clams, it would take her 80 / (40 / 11) = 80 * (11 / 40) = 22 minutes.
+
+3. **Combining the Tasks**: Since peeling and sauteing are sequential tasks (you can't saute before peeling), we need to add the time it takes to peel the clams to the time it takes to saute them. However, the question implies that these tasks are done one after the other but doesn't explicitly state that she can't start sauteing some clams while still peeling others. For the purpose of this calculation and to follow the instructions precisely without making assumptions beyond the given information, we'll consider the total time for each task separately and then consider how they might overlap or be sequential.
+
+Given the information and the format required for the answer, the critical insight is recognizing that while peeling is a straightforward calculation, sauteing's calculation directly gives us the time for 80 clams based on the rate provided. The peeling time is 8 minutes, and the sauteing time for 80 clams, based on the rate, is calculated directly from the given data.
+
+However, considering the nature of the tasks and the typical interpretation of such problems, if we were to assume that peeling and sauteing can happen in a pipeline fashion (peeling some clams while sauteing others), the limiting factor would be the longer task, which in this straightforward calculation is sauteing. But since the problem doesn't explicitly allow for simultaneous tasks or provide a clear indication that we should consider overlap, we calculate each step separately and then consider the total process time based on the given data and the format required for the answer.
+
+#### 22
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S2  — computed peel time (8) but dropped the required addition to saute time
+         evidence: "the limiting factor would be the longer task, which in this straightforward calculation is sauteing ... #### 22"
+  [passA] S2  — Computes both components correctly (8 and 22) but talks itself out of the required addition, swapping sum for max via a pipeline reinterpretation
+         evidence: "the limiting factor would be the longer task, which in this straightforward calculation is sauteing"
+  [passB] S2  — both components (8 and 22 min) computed correctly, but the model talks itself out of the required addition and drops it, emitting only the saute time
+         evidence: "we need to add the time it takes to peel the clams to the time it takes to saute them. However, the question implies that these tasks are done one after the other but doesn't explicitly state"
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0186    [rand_out_297]    consensus: S2    votes(pass1,A,B)=['S2', 'S2', 'S2']
+gold = 44.0    |    model emitted = 29
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+Nia can peel 4 clams a minute and saute 20 clams in 6 minutes. How long will it take her to peel and saute 80 clams?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To solve this problem, we need to break it down into steps.
+
+1. **Peeling the Clams**: Nia can peel 4 clams a minute. To peel 80 clams, it would take her 80 / 4 = 20 minutes.
+
+2. **Sauteing the Clams**: Nia can saute 20 clams in 6 minutes. To find out how many minutes it takes her to saute 1 clam, we divide 6 minutes by 20 clams, which gives us 6 / 20 = 0.3 minutes per clam. For 80 clams, it would take her 80 * 0.3 = 24 minutes.
+
+However, these tasks are typically done sequentially in batches rather than simultaneously for all clams due to the nature of the tasks. So, we should consider the time it takes to complete each task separately and then sum them up for the total time, but considering the most efficient way to do this (peeling and then sauteing in batches that match her sauteing capacity).
+
+- **Peeling Time**: 20 minutes to peel all 80 clams.
+- **Sauteing Time**: Since she can saute 20 clams in 6 minutes, for 80 clams, she would need to do this 4 times (80 / 20 = 4), which would take 4 * 6 = 24 minutes.
+
+But, the peeling and sauteing can be done in a pipeline fashion: as she finishes peeling a batch of clams, she can start sauteing them. The most efficient way would be to peel and saute in batches of 20, since that's the amount she can saute at one time.
+
+- **Time to Peel 20 Clams**: 20 / 4 = 5 minutes.
+- **Time to Saute 20 Clams**: 6 minutes.
+
+So, for each batch of 20 clams, it takes her 5 minutes to peel and then 6 minutes to saute, totaling 11 minutes per batch. However, since peeling and sauteing can overlap for subsequent batches (she can start peeling the next batch while sauteing the current one), the total time isn't simply 11 minutes * 4 batches.
+
+For the first batch, it takes 5 minutes to peel + 6 minutes to saute = 11 minutes.
+For each subsequent batch, she can peel the next batch while sauteing the current one, so it adds 5 minutes for each additional batch after the first (since the 6 minutes of sauteing overlaps with the 5 minutes of peeling for the next batch).
+
+So, after the first batch (11 minutes), she has 3 more batches to go. Each of these batches adds 6 minutes (the time it takes to saute, as the peeling time overlaps), because she can peel the next batch of clams while she's sauteing the previous batch.
+
+- **Total Time**: 11 minutes (for the first batch) + 3 * 6 minutes (for the subsequent batches) = 11 + 18 = 29 minutes.
+
+#### 29
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S2  — invents a pipelining/overlap structure instead of the intended sequential sum
+         evidence: "Total Time: 11 minutes (for the first batch) + 3 * 6 minutes (for the subsequent batches) = 11 + 18 = 29 minutes."
+  [passA] S2  — peel (20) and saute (24) times each correct; invents a spurious pipelining scheme instead of summing
+         evidence: "since peeling and sauteing can overlap for subsequent batches (she can start peeling the next batch while sauteing the current one)"
+  [passB] S2  — computes both components correctly (peel 20, saute 24) but replaces the required simple sum with an invented pipelined-overlap scheme
+         evidence: "11 minutes (for the first batch) + 3 * 6 minutes (for the subsequent batches) = 11 + 18 = 29 minutes."
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0189    [rand_out_297]    consensus: S2    votes(pass1,A,B)=['S2', 'S2', 'S2']
+gold = 164.0    |    model emitted = 144
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+Yara can peel 9 carrots a minute and saute 20 carrots in 16 minutes. How long will it take her to peel and saute 180 carrots?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To solve this problem, we need to break it down into steps.
+
+First, let's calculate how long it takes Yara to peel 180 carrots:
+Yara can peel 9 carrots a minute. To find out how long it takes her to peel 180 carrots, we divide the total number of carrots by the number she can peel per minute: 180 / 9 = 20 minutes.
+
+Next, let's calculate how long it takes Yara to saute 180 carrots:
+Yara can saute 20 carrots in 16 minutes. To find out how long it takes her to saute 180 carrots, we first need to find out how many sets of 20 carrots she has: 180 / 20 = 9 sets. Since it takes her 16 minutes to saute one set, it will take her 9 * 16 minutes to saute all 9 sets: 9 * 16 = 144 minutes.
+
+Now, we need to consider that peeling and sauteing are sequential tasks. Yara cannot saute the carrots until they are peeled, but she can peel the next set of carrots while sauteing the previous set. However, given the significant difference in the time it takes to peel versus saute, the peeling time becomes negligible in comparison to the sauteing time for the overall process. Essentially, the limiting factor here is the sauteing time because it's much longer than the peeling time.
+
+However, to accurately account for both processes, we should recognize that while the carrots are being sautéed, more carrots can be peeled. But since peeling is so much faster, the time it takes to peel all the carrots (20 minutes) is less than the time it takes to sauté them (144 minutes). Thus, the total time is essentially the time it takes to sauté all the carrots because by the time the first batch is done being sautéed, the next batch can be ready to go, having been peeled during the sautéing of the first batch.
+
+Therefore, the total time it will take Yara to peel and saute 180 carrots is primarily determined by the sauteing time, as the peeling can be completed within the timeframe of sauteing the carrots.
+
+#### 144
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S2  — computed peel=20 and saute=144 correctly then dropped the required addition, treating tasks as parallel
+         evidence: "the total time is essentially the time it takes to sauté all the carrots"
+  [passA] S2  — WRONG-STRUCTURE: both components computed correctly (20 and 144) but model deliberately drops the required addition by inventing a pipelining scheme, emitting 144 instead of 164
+         evidence: "the peeling time becomes negligible in comparison to the sauteing time ... the total time is essentially the time it takes to sauté all the carrots"
+  [passB] S2  — reads correctly and computes both components right (20 and 144) but drops the required addition via a pipelining argument, emitting 144 instead of 164
+         evidence: "the total time is essentially the time it takes to sauté all the carrots"
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
+
+====================================================================================================
+CASE c0202    [rand_out_297]    consensus: S2    votes(pass1,A,B)=['S2', 'S2', 'S2']
+gold = 417.0    |    model emitted = 342
+----------------------------------------------------------------------------------------------------
+PROBLEM:
+Tara is trying to decide whether to do her financial planning herself or hire one accountant. If she does it herself, she'll be able to do 12 fewer hours of freelance work, losing ¥41/hour in missed income. The accountant charges ¥75. How much more money will she have if she hires the accountant?
+
+MODEL CHAIN-OF-THOUGHT (ablated run, verbatim):
+To determine how much more money Tara will have if she hires the accountant, let's calculate the costs of both options.
+
+1. If Tara does her financial planning herself:
+   - She loses 12 hours of freelance work.
+   - Her lost income is 12 hours * ¥41/hour = ¥492.
+   - She doesn't pay the accountant, so she saves ¥75.
+
+2. If Tara hires the accountant:
+   - She doesn't lose any freelance work hours, so she doesn't lose ¥492.
+   - She pays the accountant ¥75.
+
+Now, comparing both scenarios:
+- If she does it herself, her "cost" is ¥492 (lost income) - ¥75 (saved from not hiring accountant) = ¥417.
+- If she hires the accountant, her cost is ¥75.
+
+The difference in cost between doing it herself and hiring the accountant is ¥417 - ¥75 = ¥342.
+
+Since the question asks how much more money she will have if she hires the accountant, we consider the difference in the context of "more money" which implies the savings or reduction in loss by hiring the accountant. Thus, by hiring the accountant, Tara effectively saves ¥342 compared to doing it herself.
+
+#### 342
+
+----------------------------------------------------------------------------------------------------
+LABELER VOTES & REASONING:
+  [pass1] S2  — inserts spurious extra subtraction of the 75 fee, over-subtracting to 342
+         evidence: "her "cost" is ¥492 (lost income) - ¥75 (saved from not hiring accountant) = ¥417"
+  [passA] S2  — Comprehension and arithmetic fine; inserts a spurious extra subtraction of the ¥75 fee ('saved from not hiring') so the fee is double-counted - wrong operation structure.
+         evidence: "her "cost" is ¥492 (lost income) - ¥75 (saved from not hiring accountant) = ¥417."
+  [passB] S2  — Reads all quantities correctly but inserts a spurious 'saved ¥75' subtraction into the DIY cost, double-counting the fee (492-75 then -75 again gives 342 instead of 417)
+         evidence: "her "cost" is ¥492 (lost income) - ¥75 (saved from not hiring accountant) = ¥417."
+
+>>> YOUR JUDGMENT  (S1 = comprehension/misread | S2 = operation-planning | S34 = execution | ARTIFACT):  ______
+>>> NOTES:
+
