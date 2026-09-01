@@ -67,7 +67,6 @@ annotation artifacts for the failure-classification experiment.
 │   ├── plot_dla_method.py                #   engagement-anchored DLA schematic (Fig 7)
 │   └── plot_svamp_transfer.py            #   SVAMP transfer curves (Fig 19)
 │
-├── error_typing_review/                  # blind failure-classification sheets (Table 3)
 ├── data_scripts/                         # dataset construction (SVAMP, PhantomWiki)
 └── data/                                 # datasets (see data/README.md)
 ```

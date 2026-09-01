@@ -21,7 +21,7 @@ Hugging Face. Swap `--model_id` for the appendix robustness models
 | Figure 7 — engagement-anchored DLA schematic | `python plotting/plot_dla_method.py` (schematic, no data) |
 | Figure 19 — SVAMP four-stage signatures (appendix) | `python data_scripts/svamp/build_svamp_probe_metadata.py` → `python experiments/run_svamp_presence_probe.py --mode direct --correct_only`; operand and answer rows use `run_svamp_variants_presence_probe.py` and `diag_svamp_answer_within_problem.py` |
 | Tables 1 / 2 — head ablation + amplification | `python experiments/run_cot_swap_dla.py --contrast filler_df_correct_vs_noop_clean_wrong` → `python experiments/run_cot_swap_head_scaling.py --contrast filler_df_correct_vs_noop_clean_wrong --side noop --patch_position cot_end` |
-| Table 3 — failure classification under ablation | Roll-outs: `python experiments/run_cot_swap_head_scaling.py --contrast filler_df_correct_vs_noop_clean_wrong --side noop --scale 0`; the blind annotation sheets and adjudicated labels are in `error_typing_review/` |
+| Table 3 — failure classification under ablation | Roll-outs: `python experiments/run_cot_swap_head_scaling.py --contrast filler_df_correct_vs_noop_clean_wrong --side noop --scale 0`, then label the resulting traces blind |
 | PhantomWiki probes (appendix, in text) | `bash data_scripts/phantomwiki/generate_universes.sh` → `python data_scripts/phantomwiki/build_phantomwiki_dataset.py` → `python experiments/run_phantomwiki_role_probe.py`; the reported chain-membership value is the difficulty-matched contrast, `python diagnostics/diag_role_probe_adjacency_matched_dm.py`, with `diag_role_probe_renamed_negatives.py` as the copy-identity control |
 
 `--model_id meta-llama/Llama-3.3-70B-Instruct` is the default. All `run_*` scripts
@@ -40,7 +40,7 @@ passes.
 5. **Attention-head mechanism** (Tables 1, 2): `run_cot_swap_dla.py` →
    `run_cot_swap_head_scaling.py`
 6. **Failure classification** (Table 3): re-run head scaling at `--scale 0`, then
-   label traces blind; see `error_typing_review/`
+   label traces blind
 7. **Generalization** (appendix): build the datasets under `data_scripts/`, then
    `run_svamp_presence_probe.py` / `run_phantomwiki_role_probe.py` and the
    matching `diag_*` contrasts
