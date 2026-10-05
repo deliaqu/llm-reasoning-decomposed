@@ -6,6 +6,8 @@ Code accompanying the paper by
 <!-- TODO(camera-ready): add the ACL Anthology link once the paper appears. -->
 *To appear in Findings of the Association for Computational Linguistics: EMNLP 2026.*
 
+📄 **[Paper (camera-ready PDF)](paper.pdf)**
+
 The paper proposes a four-stage decomposition of grade-school math word-problem
 solving in LLMs — **Schema Abstraction**, **Operation Planning**, **Operand
 Binding**, **Computation** — and uses the same scaffold to localize
